@@ -30,7 +30,10 @@ export class InvoiceComponent implements OnInit {
   }
 
   openModal(template: InvoiceComponent) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    if (this.model.TO.trim() && this.model.PO_KEY && this.model.PRODUCT.trim() && this.model.NUM_PRODUCT && this.model.VALUE) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
+    }
   }
 
   confirm(): void {

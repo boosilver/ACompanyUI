@@ -29,7 +29,12 @@ export class AcceptComponent implements OnInit {
   }
 
   openModal(template: AcceptComponent) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    if (this.model.BANK.trim() && this.model.LOAN_KEY && this.model.DOC_LOAN.trim()) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
+    }
+    // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
   }
   confirm(): void {
     this.model.BANK=this.model.BANK.trim();

@@ -25,9 +25,13 @@ export class RejectComponent implements OnInit {
     // setTimeout(function(){
         that.model = Reject.sampleSubmitSr();
   }
-
   openModal(template: Reject) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    if (this.model.TYPE.trim() && this.model.KEY) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
+    }
+    // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
   }
   confirm(): void {
     this.model.TYPE=this.model.TYPE.trim();

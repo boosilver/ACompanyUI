@@ -4,7 +4,7 @@
   <div class="form-group row">
     <H1>CREATE INVOICE</H1>
   </div>
-  <form (ngSubmit)="onSubmit()" ngNativeValidate>
+  <form ngNativeValidate>
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
@@ -50,7 +50,7 @@
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
     <div class="row">
       <div class="center">
-        <button type="button" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
+        <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
           (click)="openModal(template)" style="text-shadow:1px 1px 0 #444">SUBMIT</button>
       </div>
     </div>
@@ -66,7 +66,7 @@
     </pre>
         <p>Do you want to confirm?</p>
 
-        <button type="submit" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
         <button type="button" class="btn btn-primary" (click)="decline()">No</button>
       </div>
     </ng-template>

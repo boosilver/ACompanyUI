@@ -29,7 +29,10 @@ export class LoanbyinvComponent implements OnInit {
             that.model = Loanbyinv.sampleSubmitSr();
   }
   openModal(template: LoanbyinvComponent) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    if (this.model.BANK.trim() && this.model.DOC_LOAN.trim() && this.model.KEY) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
+    }
   }
 
   confirm(): void {
