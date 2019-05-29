@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule, RequestOptions } from '@angular/http';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 
-import { LoadingModule } from 'ngx-loading';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 //------- Service --------
@@ -36,8 +36,8 @@ import { RejectComponent } from './reject/reject.component';
     LoanbyinvComponent,
     AcceptComponent,
     RejectComponent,
-   
-    
+
+
 
   ],
   imports: [
@@ -46,7 +46,14 @@ import { RejectComponent } from './reject/reject.component';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
-    LoadingModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: 'rgba(255,255,255,0.3)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#FF6666',
+      secondaryColour: '#FF6633',
+      tertiaryColour: '#FF3333'
+    }),
     ModalModule.forRoot()
 
   ],

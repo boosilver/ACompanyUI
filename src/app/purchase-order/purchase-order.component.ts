@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TransactionCreatePurchaseOrder } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import {Util} from '../../util/util'
+import { Util } from '../../util/util'
 
 @Component({
   selector: 'app-purchase-order',
@@ -29,7 +29,12 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   openModal(template: PurchaseOrderComponent) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    if (this.model.TO.trim() && this.model.PRODUCT.trim() && this.model.NUM_PRODUCT && this.model.VALUE) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
+    }
+    // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+
   }
 
   confirm(): void {
