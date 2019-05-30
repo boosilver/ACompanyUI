@@ -30,7 +30,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   openModal(template: InvoiceComponent) {
-    if (this.model.TO.trim() && this.model.PO_KEY && this.model.PRODUCT.trim() && this.model.NUM_PRODUCT && this.model.VALUE) {
+    if (this.model.TO.trim() && this.model.PO_KEY && this.model.PRODUCT.trim() && this.model.NUM_PRODUCT && this.model.VALUE && this.model.EMAIL) {
       this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
 
     }
@@ -39,9 +39,13 @@ export class InvoiceComponent implements OnInit {
   confirm(): void {
     this.model.TO=this.model.TO.trim();
     this.model.PO_KEY = this.model.PO_KEY;
+    this.model.EMAIL = this.model.EMAIL.trim();
+    this.model.TEL_NUMBER = this.model.TEL_NUMBER;
     this.model.PRODUCT=this.model.PRODUCT.trim();
+    this.model.DELIVERY_ADDRESS = this.model.DELIVERY_ADDRESS.trim();
     this.model.NUM_PRODUCT = this.model.NUM_PRODUCT;
     this.model.VALUE = this.model.VALUE;
+    this.model.DETAIL = this.model.DETAIL.trim();
 
     
     console.log('INVOICE DATA');

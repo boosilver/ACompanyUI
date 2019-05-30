@@ -31,18 +31,35 @@ export class TransactionCreatePurchaseOrder {
     const sample: TransactionCreatePurchaseOrder = TransactionCreatePurchaseOrder.empty();
 
     sample.TO = 'lotus';
+    sample.EMAIL = 'bossza555@hotmail.com';
+    sample.TEL_NUMBER = '0982486331';
+    sample.TAX_ID = '1234567891234';
+    sample.DELIVERY_ADDRESS = '123 Empirestate';
     sample.PRODUCT = 'apple';
     sample.NUM_PRODUCT = '100';
     sample.VALUE = '250';
+    sample.DELIVERY_DATE = new Date('');
+    sample.PAYMENT = new Date('');
+    sample.DETAIL = 'detail';
+
 
     return sample;
   }
 
   constructor(
     public TO: string,
+    public EMAIL: string,
+    public TEL_NUMBER: string,
+    public TAX_ID: string,
+    public DELIVERY_ADDRESS: string,
     public PRODUCT: string,
     public NUM_PRODUCT: string,
     public VALUE: string,
+    public DELIVERY_DATE: Date,
+    public PAYMENT: Date,
+    // public receipt: FieldsReceipt,
+    public DETAIL: string,
+
   ) { }
 }
 // ------------------------------------------ END -------------------------------------------------------------------
@@ -58,10 +75,14 @@ export class TransactionCreateInvoice {
     const sample: TransactionCreateInvoice = TransactionCreateInvoice.empty();
 
     sample.TO = 'themall';
+    sample.EMAIL = 'bossza555@hotmail.com';
+    sample.DELIVERY_ADDRESS = '123 Empirestate';
+    sample.TEL_NUMBER = '0982486331';
     sample.PO_KEY = '100';
     sample.PRODUCT = 'apple';
     sample.NUM_PRODUCT = '100';
     sample.VALUE = '250';
+    sample.DETAIL = 'detail';
 
 
     return sample;
@@ -69,10 +90,14 @@ export class TransactionCreateInvoice {
 
   constructor(
     public TO: string,
+    public EMAIL: string,
+    public TEL_NUMBER: string,
+    public DELIVERY_ADDRESS: string,
     public PO_KEY: string,
     public PRODUCT: string,
     public NUM_PRODUCT: string,
     public VALUE: string,
+    public DETAIL: string,
 
   ) { }
 }
@@ -141,6 +166,14 @@ export class Loanbyinv {
     sample.BANK = 'bank';
     sample.DOC_LOAN = 'PO';
     sample.KEY = '1';
+    sample.EMAIL = 'bossza555@hotmail.com';
+    sample.TEL_NUMBER = '0982486331';
+    sample.BUSINESS_TYPE = 'PO';
+    sample.INCOME = '10000000';
+    sample.GUARANTEE = '17000000';
+    sample.LOAN_AMOUNT = '1000000';
+    sample.INSTALLMENT = '5';
+
 
     return sample;
   }
@@ -149,6 +182,13 @@ export class Loanbyinv {
     public BANK: string,
     public DOC_LOAN: string,
     public KEY: string,
+    public EMAIL: string,
+    public TEL_NUMBER: string,
+    public BUSINESS_TYPE: string,
+    public INCOME: string,
+    public GUARANTEE: string,
+    public LOAN_AMOUNT: string,
+    public INSTALLMENT: string,
 
   ) { }
 }
@@ -205,3 +245,87 @@ export class Reject {
   ) { }
 }
 // ------------------------------------------------- END ---------------------------------------------------------
+
+// ------------------------------------------------- ADD ---------------------------------------------------------
+
+// export class FieldsReceipt {
+//   static empty(): FieldsReceipt {
+//     return empty(FieldsReceipt, 3);
+//   }
+
+//   static sample(): FieldsReceipt {
+//     const sample = FieldsReceipt.empty();
+//     sample.receiptNo = "784572";
+//     sample.treatment = new Array();
+//     sample.total = 0;
+
+//     sample.treatment.push(ListTreatment.sample());
+//     return sample;
+//   }
+
+//   static SubmitSr(): FieldsReceipt {
+//     const sample = FieldsReceipt.empty();
+//     sample.receiptNo = "";
+//     sample.treatment = new Array();
+//     sample.total = 0;
+
+//     sample.treatment.push(ListTreatment.sample());
+//     return sample;
+//   }
+
+//   constructor(
+//     public receiptNo: string,
+//     public treatment: Array<ListTreatment>,
+//     public total: number
+//   ) { }
+// }
+// // ------------------------------------------------- END ---------------------------------------------------------
+
+// // ------------------------------------------------- ADD2 ---------------------------------------------------------
+
+// export class ListTreatment {
+//   static empty(): ListTreatment {
+//     return empty(ListTreatment, 5);
+//   }
+
+//   static sample(): ListTreatment {
+//     const sample = ListTreatment.empty();
+
+//     sample.listNo = '0';
+//     sample.PRODUCT = 'itemA';
+//     sample.NUM_PRODUCT = 3;
+//     sample.VALUE = 60;
+
+//     return sample;
+//   }
+//   static sample2(): ListTreatment {
+//     const sample = ListTreatment.empty();
+
+//     sample.listNo = '1';
+//     sample.PRODUCT = 'LAB G';
+//     sample.NUM_PRODUCT = 1;
+//     sample.VALUE = 210;
+
+//     return sample;
+//   }
+
+//   static SubmitSr(): ListTreatment {
+//     const sample = ListTreatment.empty();
+
+//     sample.listNo = '0';
+//     sample.PRODUCT = 'item';
+//     sample.NUM_PRODUCT ;
+//     sample.VALUE ;
+
+//     return sample;
+//   }
+
+//   constructor(
+//     public listNo: string,
+//     public PRODUCT: string,
+//     public NUM_PRODUCT: number,
+//     public VALUE: number,
+//   ) { }
+// }
+// ------------------------------------------------- END ---------------------------------------------------------
+

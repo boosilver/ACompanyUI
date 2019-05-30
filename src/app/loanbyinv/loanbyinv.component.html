@@ -2,19 +2,18 @@
   <ngx-loading [show]="loading"></ngx-loading>
   <br>
   <div class="form-group row">
-    <H1>LOAN BY INVOICE</H1>
+    <H1>LOAN </H1>
   </div>
-    <form ngNativeValidate>
+  <form ngNativeValidate>
+
 
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
         <label for="BANK" class="text-muted">BANK</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.BANK" id="BANK" name="BANK">
       </div>
-    </div>
 
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
         <label for="DOC_LOAN" class="text-muted">DOCUMENT LOAN</label>
         <select class="form-control" required [(ngModel)]="model.DOC_LOAN" [name]="DOC_LOAN" id="DOC_LOAN"
           [ngModelOptions]="{standalone: true}">
@@ -23,14 +22,66 @@
         </select>
       </div>
     </div>
+    <br>
 
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
         <label for="KEY" class="text-muted">DOCUMENT KEY</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.KEY" id="KEY" name="KEY">
       </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="EMAIL" class="text-muted">E-mail</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.EMAIL" id="EMAIL"
+          name="EMAIL">
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TEL_NUMBER" class="text-muted">Tel</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TEL_NUMBER" id="TEL_NUMBER"
+          name="TEL_NUMBER" pattern="^([0-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="BUSINESS_TYPE" class="text-muted">Business type</label>
+        <select class="form-control" required [(ngModel)]="model.BUSINESS_TYPE" [name]="BUSINESS_TYPE"
+          id="BUSINESS_TYPE" [ngModelOptions]="{standalone: true}">
+          <option value="PO">Purchase Order</option>
+          <option value="INVOICE">Invoice</option>
+        </select>
+      </div>
     </div>
     <br>
+
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="INCOME" class="text-muted">Income</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INCOME" id="INCOME" name="INCOME">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="GUARANTEE" class="text-muted">Guarantee</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.GUARANTEE" id="GUARANTEE"
+          name="GUARANTEE">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="LOAN_AMOUNT" class="text-muted">Loan amount</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.LOAN_AMOUNT" id="LOAN_AMOUNT" name="LOAN_AMOUNT">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="INSTALLMENT" class="text-muted">Installment</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INSTALLMENT" id="INSTALLMENT"
+          name="INSTALLMENT">
+      </div>
+    </div>
+    <hr>
 
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
     <div class="row">
@@ -43,9 +94,17 @@
     <ng-template #template>
       <div class="modal-body text-center">
         <pre class="card card-block card-header">
-      <p>BANK :{{this.model.BANK}}</p>
-      <p>DOCUMENT LOAN :{{this.model.DOC_LOAN}}</p>
+      <p>BANK :{{this.model.BANK.trim()}}</p>
+      <p>DOCUMENT LOAN :{{this.model.DOC_LOAN.trim()}}</p>
       <p>DOCUMENT KEY :{{this.model.KEY}}</p>
+      <p>DOCUMENT EMAIL :{{this.model.EMAIL.trim()}}</p>
+      <p>DOCUMENT TEL :{{this.model.TEL_NUMBER}}</p>
+      <p>DOCUMENT BUSINESS TYPE :{{this.model.BUSINESS_TYPE.trim()}}</p>
+      <p>DOCUMENT INCOME :{{this.model.INCOME}}</p>
+      <p>GUARANTEE :{{this.model.GUARANTEE}}</p>
+      <p>LOAN AMOUNT :{{this.model.LOAN_AMOUNT}}</p>
+      <p>INSTALLMENT :{{this.model.INSTALLMENT}}</p>
+
     </pre>
         <p>Do you want to confirm?</p>
 

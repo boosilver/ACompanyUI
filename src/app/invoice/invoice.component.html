@@ -1,50 +1,75 @@
 <div class="container">
   <ngx-loading [show]="loading"></ngx-loading>
-<br>
+  <br>
   <div class="form-group row">
     <H1>CREATE INVOICE</H1>
   </div>
   <form ngNativeValidate>
 
+
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="TO" class="text-muted">TO</label>
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TO" class="text-muted">To (company)</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TO" id="TO" name="TO">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="EMAIL" class="text-muted">E-mail</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.EMAIL" id="EMAIL"
+          name="EMAIL">
       </div>
     </div>
 
+    <br>
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="PO_KEY" class="text-muted">PURCHASE ORDER KEY</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.PO_KEY" id="PO_KEY"
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TEL_NUMBER" class="text-muted">Tel</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TEL_NUMBER" id="TEL_NUMBER"
+          name="TEL_NUMBER" pattern="^([0-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="PO_KEY" class="text-muted">Purchase Order Key</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PO_KEY" id="PO_KEY"
           name="PO_KEY">
+      </div>
+    </div>
+    <hr>
+
+    <div class="row col-md-10 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="PRODUCT" class="text-muted">Product</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT"
+          name="PRODUCT">
+      </div>
+      <div class="field-label col-md-4 mx-auto">
+        <label for="NUM_PRODUCT" class="text-muted">Product Amount</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
+          name="NUM_PRODUCT">
+      </div>
+      <div class="field-label col-md-4 mx-auto">
+        <label for="VALUE" class="text-muted">Price Amount</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
+          name="VALUE">
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="DELIVERY_DATE" class="text-muted">DELIVERY DATE</label>
+        <input type="date" class="form-control border-bottom" required [(ngModel)]="model.DELIVERY_DATE"
+          id="DELIVERY_DATE" name="DELIVERY_DATE">
       </div>
     </div>
     
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="PRODUCT" class="text-muted">PRODUCT</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT" name="PRODUCT">
+      <div class="field-label col-md-10 mx-auto">
+        <label for="DETAIL" class="text-muted">Other</label>
+        <textarea rows="4" cols="50" class="form-control border-bottom" [(ngModel)]="model.DETAIL"
+          id="DETAIL" name="DETAIL"></textarea>
       </div>
     </div>
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="NUM_PRODUCT" class="text-muted">INVOICE KEY</label>
-        <input type="number" class="form-control " [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT" name="NUM_PRODUCT"
-          required>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="VALUE" class="text-muted">VALUE</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
-          name="VALUE">
-      </div>
-    </div>
-
     <br>
 
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
@@ -58,11 +83,15 @@
     <ng-template #template>
       <div class="modal-body text-center">
         <pre class="card card-block card-header">
-      <p>TO :{{this.model.TO}}</p>
+      <p>TO :{{this.model.TO.trim()}}</p>
+      <p>EMAIL :{{this.model.EMAIL.trim()}}</p>
+      <p>TEL :{{this.model.TEL_NUMBER}}</p>
       <p>PURCHASE ORDER ID :{{this.model.PO_KEY}}</p>
-      <p>PRODUCT :{{this.model.PRODUCT}}</p>
+      <p>PRODUCT :{{this.model.PRODUCT.trim()}}</p>
       <p>NUMBER OF PRODUCT :{{this.model.NUM_PRODUCT}}</p>
       <p>VALUE :{{this.model.VALUE}}</p>
+      <p>DELIVERY DATE :{{this.model.DELIVERY_DATE}}</p>
+
     </pre>
         <p>Do you want to confirm?</p>
 

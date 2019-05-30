@@ -1,56 +1,157 @@
 <div class="container">
-    <ngx-loading [show]="loading"></ngx-loading>
+  <ngx-loading [show]="loading"></ngx-loading>
   <br>
   <div class="form-group row">
     <H1>CREATE PURCHASE ORDER</H1>
   </div>
+
+
   <form ngNativeValidate>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="field-label col-md-6 mx-auto">
         <label for="TO" class="text-muted">TO</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TO" id="TO" name="TO">
       </div>
-    </div>
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="PRODUCT" class="text-muted">PRODUCT</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT"
-          name="PRODUCT">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="NUM_PRODUCT" class="text-muted">NUMBER OF PRODUCT</label>
-        <input type="number" class="form-control " [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT" name="NUM_PRODUCT"
-          required>
-      </div>
-    </div>
-
-    <!-- <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="PRODUCT" class="text-muted">PRODUCT</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT" name="PRODUCT">
-      </div>
     </div> -->
 
     <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="VALUE" class="text-muted">VALUE</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
-          name="VALUE">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TO" class="text-muted">To (company)</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TO" id="TO" name="TO">
       </div>
-    </div>
 
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="EMAIL" class="text-muted">E-mail</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.EMAIL" id="EMAIL"
+          name="EMAIL">
       </div>
     </div>
 
     <br>
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TEL_NUMBER" class="text-muted">Tel</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TEL_NUMBER" id="TEL_NUMBER"
+          name="TEL_NUMBER" pattern="^([0-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$">
+      </div>
 
+      <div class="field-label col-md-4 mx-auto">
+        <label for="TAX_ID" class="text-muted">Tax ID</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.TAX_ID" id="TAX_ID"
+          name="TAX_ID">
+      </div>
+    </div>
+
+    
+
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+    <hr>
+    <br>
+    <div class="row">
+      <div class="field-label col-md-10 mx-auto">
+        <label for="DELIVERY_ADDRESS" class="text-muted">Delivery Address</label>
+        <textarea rows="2" cols="50" class="form-control border-bottom" [(ngModel)]="model.DELIVERY_ADDRESS"
+          id="DELIVERY_ADDRESS" name="DELIVERY_ADDRESS"></textarea>
+      </div>
+    </div>
+
+     <!-- --------------------------------------------------------------------------------------------------------------- -->
+     <hr>
+    <br>
+    <div class="row col-md-10 mx-auto">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="PRODUCT" class="text-muted">Product</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT"
+          name="PRODUCT">
+      </div>
+      <div class="field-label col-md-4 mx-auto">
+        <label for="NUM_PRODUCT" class="text-muted">Product Amount</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
+          name="NUM_PRODUCT">
+      </div>
+      <div class="field-label col-md-4 mx-auto">
+        <label for="VALUE" class="text-muted">Price Amount</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
+          name="VALUE">
+      </div>
+    </div>
+
+     <!-- --------------------------------------------------------------------------------------------------------------- -->
+     <hr>
+
+    <br>
+    <div class="row">
+      <div class="field-label col-md-4 mx-auto">
+        <label for="DELIVERY_DATE" class="text-muted">DELIVERY DATE</label>
+        <input type="date" class="form-control border-bottom" required [(ngModel)]="model.DELIVERY_DATE"
+          id="DELIVERY_DATE" name="DELIVERY_DATE">
+      </div>
+
+      <div class="field-label col-md-4 mx-auto">
+        <label for="PAYMENT" class="text-muted">Payment Date</label>
+        <input type="date" class="form-control border-bottom" required [(ngModel)]="model.PAYMENT" id="PAYMENT"
+          name="PAYMENT">
+      </div>
+    </div>
+<!-- 
+    <div class="form-group row">
+      <B>Product<span class="required-field"></span></B>
+    </div>
+    <div class="header-row row">
+
+      <div class="col-md-4">
+        Name
+      </div>
+      <div class="col-md-2">
+        Product Amount
+      </div>
+      <div class="col-md-2">
+        Price per unit
+      </div>
+      <div class="col-md-1 btnAddReceiptTreatment">
+        <button type="button" class="btnView" (click)="addReceiptTreatment()"><span class="glyphicon glyphicon-plus"></span><span
+            class="textButton"> Add</span></button>
+      </div>
+    </div>
+
+    <div *ngFor="let treatment of receipt.treatment; let i=index" class="row impact">
+      <br>
+      <div class="col-md-4">
+        <input type="text" class="form-control border-bottom text-center" required [(ngModel)]="model.PRODUCT" [name]="i+'PRODUCT'">
+      </div>
+
+      <div class="col-md-2">
+        <input type="text" class="form-control border-bottom text-center" required [(ngModel)]="model.NUM_PRODUCT"
+          [name]="i+'NUM_PRODUCT'" name="quantity" pattern="^([1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$">
+      </div>
+
+      <div class="col-md-2">
+        <input type="text" class="form-control border-bottom text-center" required [(ngModel)]="model.VALUE" [name]="i+'VALUE'"
+         pattern="^([1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$">
+      </div>
+
+      <div class="col-md-1">
+        <input type="image" class="deleteImpactBody" (click)="deleteReceiptTreatment(i)" src="assets/images/ic_delete_gray.png" />
+      </div>
+      <br>
+    </div>
+    <hr>
+    <br> -->
+
+    <div class="row">
+      <div class="field-label col-md-6 mx-auto">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="field-label col-md-10 mx-auto">
+        <label for="DETAIL" class="text-muted">Other</label>
+        <textarea rows="4" cols="50" class="form-control border-bottom" [(ngModel)]="model.DETAIL"
+          id="DETAIL" name="DETAIL"></textarea>
+      </div>
+    </div>
+<hr>
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
     <div class="row">
       <div class="center">
@@ -61,14 +162,21 @@
 
     <ng-template #template>
       <div class="modal-body text-center">
-        <pre class="card card-block card-header">
-        <p>TO :{{this.model.TO}}</p>
+        <pre class="card card-block card-header text-left">
+        <p>TO :{{this.model.TO.trim()}}</p>
+        <p>EMAIL :{{this.model.EMAIL.trim()}}</p>
+        <p>TELNUMBER :{{this.model.TEL_NUMBER}}</p>
+        <p>TAX ID :{{this.model.TAX_ID}}</p>
+        <p>DELIVERY ADDRESS :{{this.model.DELIVERY_ADDRESS.trim()}}</p>
         <p>PRODUCT :{{this.model.PRODUCT.trim()}}</p>
         <p>NUMBER OF PRODUCT :{{this.model.NUM_PRODUCT}}</p>
         <p>VALUE :{{this.model.VALUE}}</p>
+        <p>DELIVERY DATE :{{this.model.DELIVERY_DATE}}</p>
+        <p>PAYMENT DATE :{{this.model.PAYMENT}}</p>
+
+
       </pre>
         <p>Do you want to confirm?</p>
-
         <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
         <button type="button" class="btn btn-primary" (click)="decline()">No</button>
       </div>
@@ -86,4 +194,5 @@
 
 
   </form>
+
 </div>

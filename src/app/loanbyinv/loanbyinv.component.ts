@@ -39,6 +39,14 @@ export class LoanbyinvComponent implements OnInit {
     this.model.BANK=this.model.BANK.trim();
     this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
     this.model.KEY = this.model.KEY;
+    this.model.EMAIL = this.model.EMAIL.trim();
+    this.model.TEL_NUMBER = this.model.TEL_NUMBER;
+    this.model.BUSINESS_TYPE = this.model.BUSINESS_TYPE.trim();
+    this.model.INCOME = this.model.INCOME;
+    this.model.GUARANTEE = this.model.GUARANTEE;
+    this.model.LOAN_AMOUNT = this.model.LOAN_AMOUNT;
+    this.model.INSTALLMENT = this.model.INSTALLMENT;
+
     
     console.log('Loanbyinv DATA');
     console.log('saving draft ' + JSON.stringify(this.model));

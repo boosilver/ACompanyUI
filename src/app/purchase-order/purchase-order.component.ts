@@ -4,6 +4,7 @@ import { TransactionCreatePurchaseOrder } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Util } from '../../util/util'
+// import { TransactionCreatePurchaseOrder, FieldsReceipt, ListTreatment } from '.././model';
 
 @Component({
   selector: 'app-purchase-order',
@@ -16,6 +17,8 @@ export class PurchaseOrderComponent implements OnInit {
   modalRef: BsModalRef;
   bsModalRef: BsModalRef;
   message: string;
+  // receipt: FieldsReceipt = FieldsReceipt.empty();
+
 
   constructor(
     private svc: PROCURETOPAYService,
@@ -26,10 +29,21 @@ export class PurchaseOrderComponent implements OnInit {
     var that = this;
     // setTimeout(function(){
     that.model = TransactionCreatePurchaseOrder.sampleSubmitSr();
+    // that.receipt = FieldsReceipt.sample();
+    // this.receipt.treatment = [];
+    // const numRecords = this.receipt.treatment.length;
+    // const newRecord = ListTreatment.sample();
+    // const newRecord2 = ListTreatment.sample2();
+    // newRecord.listNo = numRecords.toString();
+
+    // this.receipt.treatment.push(newRecord);
+    // this.receipt.treatment.push(newRecord2);
+
   }
 
   openModal(template: PurchaseOrderComponent) {
-    if (this.model.TO.trim() && this.model.PRODUCT.trim() && this.model.NUM_PRODUCT && this.model.VALUE) {
+    if (this.model.TO.trim() && this.model.PRODUCT.trim()
+      && this.model.NUM_PRODUCT && this.model.VALUE && this.model.EMAIL.trim()) {
       this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
 
     }
@@ -39,12 +53,22 @@ export class PurchaseOrderComponent implements OnInit {
 
   confirm(): void {
     this.model.TO = this.model.TO.trim();
+    this.model.EMAIL = this.model.EMAIL.trim();
+    this.model.NUM_PRODUCT = this.model.NUM_PRODUCT;
+    this.model.TEL_NUMBER = this.model.TEL_NUMBER;
+    this.model.TAX_ID = this.model.TAX_ID;
+    this.model.DELIVERY_ADDRESS = this.model.DELIVERY_ADDRESS.trim();
     this.model.PRODUCT = this.model.PRODUCT.trim();
+    this.model.VALUE = this.model.VALUE;
+    this.model.DELIVERY_DATE = new Date(this.model.DELIVERY_DATE);
+    this.model.PAYMENT = new Date(this.model.PAYMENT);
+    // this.model.receipt = FieldsReceipt.empty();
+    this.model.DETAIL = this.model.DETAIL.trim();
+
+
     // this.model.VALUE = this.model.VALUE.trim();
     //this.model.NUM_PRODUCT = Util.pad(Number(this.model.NUM_PRODUCT)); ตัวอย่างเสริม 001
     // this.model.PO_KEY = this.model.PO_KEY.trim(); เป็น number ไม่ต้องใช้ trim
-    this.model.NUM_PRODUCT = this.model.NUM_PRODUCT;
-    this.model.VALUE = this.model.VALUE;
 
     console.log('PO DATA');
     console.log('saving draft ' + JSON.stringify(this.model));
@@ -78,4 +102,18 @@ export class PurchaseOrderComponent implements OnInit {
     this.message = 'Declined!';
     this.modalRef.hide();
   }
+
+  // addReceiptTreatment() {
+
+  //   if (this.receipt.treatment === null) {
+  //     this.receipt.treatment = [];
+  //   }
+
+  //   const numRecords = this.receipt.treatment.length;
+  //   const newRecord = ListTreatment.SubmitSr();
+  //   newRecord.listNo = numRecords.toString();
+  //   this.receipt.treatment.push(newRecord);
+  // }
+
+
 }
