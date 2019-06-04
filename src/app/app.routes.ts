@@ -6,10 +6,11 @@ import { CheckpoComponent } from './checkpo/checkpo.component';
 import { LoanbyinvComponent } from './loanbyinv/loanbyinv.component';
 import { AcceptComponent } from './accept/accept.component';
 import { RejectComponent } from './reject/reject.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const AppRoutes: Routes = [
-    { path: '', redirectTo: '/purchaseorder', pathMatch: 'full' },
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'checkinvoice', component: IndexComponent },
     { path: 'invoice', component: InvoiceComponent },
     { path: 'purchaseorder', component: PurchaseOrderComponent},
@@ -17,5 +18,7 @@ export const AppRoutes: Routes = [
     { path: 'loanbyinv', component: LoanbyinvComponent},
     { path: 'accept', component: AcceptComponent},
     { path: 'reject', component: RejectComponent},
+    { path: 'dashboard', component: DashboardComponent},
+
     
 ];

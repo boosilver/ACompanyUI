@@ -23,6 +23,7 @@ import { CheckpoComponent } from './checkpo/checkpo.component';
 import { LoanbyinvComponent } from './loanbyinv/loanbyinv.component';
 import { AcceptComponent } from './accept/accept.component';
 import { RejectComponent } from './reject/reject.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 //------- End Component ----------
 
@@ -36,6 +37,7 @@ import { RejectComponent } from './reject/reject.component';
     LoanbyinvComponent,
     AcceptComponent,
     RejectComponent,
+    DashboardComponent,
 
 
 

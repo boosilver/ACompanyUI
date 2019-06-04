@@ -10,14 +10,17 @@ import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } 
 import {
   TransactionCreateInvoice,
   TransactionCreatePurchaseOrder,
-  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse,Reject
+  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse,Reject,Myinterfacedata
 } from '../model';
+
+import {HttpClient} from '@angular/common/http'
 
 @Injectable()
 export class PROCURETOPAYService {
 
   constructor(
-    private http: Http
+    private http: Http,
+    private httpClient: HttpClient
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
@@ -140,6 +143,29 @@ export class PROCURETOPAYService {
   }
   // -------------------------------------------------- End key -----------------------------------------------------------
 
+  dashboard() {
+    // const url = environment.backendBaseUrl + '/ccr/public/document';
+    const url = 'assets/config.json';
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    console.log(this.httpClient.get(url))
+    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata>res.data).then(data=>{return data;})
+  }
 
+  dashboardlist() {
+    const url = 'assets/config.json';
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    console.log(this.httpClient.get(url))
+    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.list).then(list=>{return list;})
+  }
+  // dashboard(): Observable<Myinterfacedata> {
+  //   const url = environment.backendBaseUrl + '/ccr/public/document';
+  //   // const url = 'assets/config.json';
+  //   let headers = new Headers();
+  //   this.createAuthorizationHeader(headers);
+  //   console.log(this.httpClient.get(url))
+  //   return this.httpClient.get<Myinterfacedata>(url)
+  // }
 
 }
