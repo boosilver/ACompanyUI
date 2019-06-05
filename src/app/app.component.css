@@ -43,9 +43,9 @@ body {
   nav {
     width: 100%;
     margin: 0 auto;
-    background: rgb(110, 240, 93);
+    background: rgb(248, 108, 107);
     padding: 2px 0;
-    box-shadow: 0px 5px 0px #5a452d;
+    box-shadow: 0px 5px 0px #000000;
   }
   nav ul {
     list-style: none;
