@@ -7,26 +7,27 @@
   <div class="row">
     <!-- collum1 -->
     <div class="col-sm-6 col-lg-3">
-        <div class="brand-card">
-          <div class="brand-card-header bg-po">
-            <i class="fa fa-po"></i>
-            <div class="chart-wrapper">
-              <canvas id="social-box-chart-1" height="90"></canvas>
-            </div>
+      <div class="brand-card">
+        <div class="brand-card-header bg-po">
+          <img src="../images/100.png">
+          <!-- <i class="fa fa-po"></i>
+          <div class="chart-wrapper">
+            <canvas id="social-box-chart-1" height="90"></canvas>
+          </div> -->
+        </div>
+        <div class="brand-card-body">
+          <div>
+            <div class="text-value" *ngIf="data">{{data.po}}</div>
+            <div class="text-uppercase text-muted small">Purchase Order</div>
           </div>
-          <div class="brand-card-body">
-            <div>
-              <div class="text-value" *ngIf="data">{{data.po}}</div>
-              <div class="text-uppercase text-muted small">Purchase Order</div>
-            </div>
-            <!-- <div>
+          <!-- <div>
               <div class="text-value">459</div>
               <div class="text-uppercase text-muted small">feeds</div>
             </div> -->
-          </div>
         </div>
       </div>
-      <!-- /.col-->
+    </div>
+    <!-- /.col-->
 
     <!-- collum2 -->
     <div class="col-sm-6 col-lg-3">
@@ -53,72 +54,72 @@
 
     <!-- collum3 -->
     <div class="col-sm-6 col-lg-3">
-        <div class="brand-card">
-          <div class="brand-card-header bg-success">
-            <i class="fa fa-success"></i>
-            <div class="chart-wrapper">
-              <canvas id="social-box-chart-1" height="90"></canvas>
-            </div>
+      <div class="brand-card">
+        <div class="brand-card-header bg-success">
+          <i class="fa fa-success"></i>
+          <div class="chart-wrapper">
+            <canvas id="social-box-chart-1" height="90"></canvas>
           </div>
-          <div class="brand-card-body">
-            <div>
-              <div class="text-value" *ngIf="data">{{data.success}}</div>
-              <div class="text-uppercase text-muted small">Success</div>
-            </div>
-            <!-- <div>
+        </div>
+        <div class="brand-card-body">
+          <div>
+            <div class="text-value" *ngIf="data">{{data.success}}</div>
+            <div class="text-uppercase text-muted small">Success</div>
+          </div>
+          <!-- <div>
               <div class="text-value">459</div>
               <div class="text-uppercase text-muted small">feeds</div>
             </div> -->
-          </div>
         </div>
       </div>
-      <!-- /.col-->
+    </div>
+    <!-- /.col-->
 
-      <!-- collum4 -->
+    <!-- collum4 -->
     <div class="col-sm-6 col-lg-3">
-        <div class="brand-card">
-          <div class="brand-card-header bg-wait">
-            <i class="fa fa-wait"></i>
-            <div class="chart-wrapper">
-              <canvas id="social-box-chart-1" height="90"></canvas>
-            </div>
+      <div class="brand-card">
+        <div class="brand-card-header bg-wait">
+          <i class="fa fa-wait"></i>
+          <div class="chart-wrapper">
+            <canvas id="social-box-chart-1" height="90"></canvas>
           </div>
-          <div class="brand-card-body">
-            <div>
-              <div class="text-value" *ngIf="data">{{data.failed}}</div>
-              <div class="text-uppercase text-muted small">Wait</div>
-            </div>
-            <!-- <div>
+        </div>
+        <div class="brand-card-body">
+          <div>
+            <div class="text-value" *ngIf="data">{{data.failed}}</div>
+            <div class="text-uppercase text-muted small">Wait</div>
+          </div>
+          <!-- <div>
               <div class="text-value">459</div>
               <div class="text-uppercase text-muted small">feeds</div>
             </div> -->
-          </div>
         </div>
       </div>
-      <!-- /.col-->
+    </div>
+    <!-- /.col-->
 
-      <!-- Table -->
-      <br>
-      <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light  ">
-          <thead>
-              <tr>
-                <th>Company</th>
-                <th>Date registered</th>
-                <th>Type</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!--  list คือตัวแปรของเรา -->
-              <tr *ngFor="let key of list">
-                <td>{{key.Company}}</td>
-                <td>{{key.Date}}</td>
-                <td>{{key.Type}}</td>
-                <td>
-                  <span class="badge badge-success">{{key.Status}}</span>
-                </td>
-              </tr>
-              <!-- <tr>
+    <!-- Table -->
+    <br>
+    <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light  ">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Date registered</th>
+          <th>Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--  list คือตัวแปรของเรา -->
+        <tr *ngFor="let key of list">
+          <td>{{key.Company}}</td>
+          <td>{{key.Date}}</td>
+          <td>{{key.Type}}</td>
+          <td>
+            <span class="badge badge-success">{{key.Status}}</span>
+          </td>
+        </tr>
+        <!-- <tr>
                 <td>Avram Tarasios</td>
                 <td>2012/02/01</td>
                 <td>Staff</td>
@@ -150,7 +151,7 @@
                   <span class="badge badge-success">Active</span>
                 </td>
               </tr> -->
-            </tbody>
-      </table>
+      </tbody>
+    </table>
   </div>
 </div>
