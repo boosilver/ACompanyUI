@@ -131,7 +131,7 @@ export class PROCURETOPAYService {
   // --------------------------------------------- Reject -----------------------------------------------------------
   Reject(model: Reject): Observable<any> {
     const url = environment.backendlotus + 'Reject';//asset.service.request
-    let headers = new Headers();      // http://localhost:7002/api/v1/Get
+    let headers = new Headers();      // http://localhost:7002/api/v1/Reject
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -143,31 +143,40 @@ export class PROCURETOPAYService {
   }
   // -------------------------------------------------- End key -----------------------------------------------------------
 
-  dashboard() {
-    const url = environment.backendlotus + 'GetList';
-    // const url = 'assets/config.json';
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    console.log(this.httpClient.get(url))
-    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata>res.DASHBOARD_DATA).then(DASHBOARD_DATA => { return DASHBOARD_DATA; })
-  }
-
-  dashboardlist() {
-    const url = environment.backendlotus + 'GetList';
-    // const url = 'assets/config.json';
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    console.log(this.httpClient.get(url))
-    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.DASHBOARD_LIST).then(DASHBOARD_LIST => { return DASHBOARD_LIST; })
-  }
-
-  // dashboard(): Observable<Myinterfacedata> {
+  // dashboard() {
   //   const url = environment.backendlotus + 'GetList';
   //   // const url = 'assets/config.json';
   //   let headers = new Headers();
   //   this.createAuthorizationHeader(headers);
   //   console.log(this.httpClient.get(url))
-  //   return this.httpClient.get<Myinterfacedata>(url)
+  //   return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata>res.DASHBOARD_DATA).then(DASHBOARD_DATA => { return DASHBOARD_DATA; })
   // }
+
+  // dashboardlist() {
+  //   const url = environment.backendlotus + 'GetList';
+  //   // const url = 'assets/config.json';
+  //   let headers = new Headers();
+  //   this.createAuthorizationHeader(headers);
+  //   console.log(this.httpClient.get(url))
+  //   return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.DASHBOARD_LIST).then(DASHBOARD_LIST => { return DASHBOARD_LIST; })
+  // }
+
+  dashboard(): Observable<Myinterfacedata> {
+    const url = environment.backendlotus + 'GetList';
+    // const url = 'assets/config.json';
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    console.log(this.httpClient.get(url))
+    return this.httpClient.get<Myinterfacedata>(url)
+  }
+
+  dashboardlist(): Observable<Myinterfacedata> {
+    const url = environment.backendlotus + 'GetList';
+    // const url = 'assets/config.json';
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    console.log(this.httpClient.get(url))
+    return this.httpClient.get<Myinterfacedata>(url)
+  }
 
 }
