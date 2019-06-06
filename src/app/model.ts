@@ -332,10 +332,11 @@ export class Reject {
 
 // ----------------------------------------- REJECT ---------------------------------------------------------
 export interface Myinterfacedata {
-  data: string
-  Company: string
-  Date: string
-  Type: string
+  DASHBOARD_DATA: string
+  KEY: string
+  COMPANY: string
+  DATE: string
+  TYPE: string
   Status: string
 
 }

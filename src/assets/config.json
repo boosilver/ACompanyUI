@@ -1,28 +1,31 @@
 {
-    "data": {
-        "po": 555,
-        "invoice": 123,
-        "success": 456,
-        "failed": 789
+    "DASHBOARD_DATA": {
+        "PO": 555,
+        "PO_WAIT": 123,
+        "INVOICE": 456,
+        "INVOICE_WAIT": 789
     },
-    "list": [
+    "DASHBOARD_LIST": [
         {
-            "Company": "bank",
-            "Date": "2019/01/02",
-            "Type": "PO",
-            "Status": "Active"
+            "KEY": 1234,
+            "COMPANY": "bank",
+            "DATE": "2019/01/02",
+            "TYPE": "PO",
+            "STATUS": "Wait"
         },
         {
-            "Company": "lotus",
-            "Date": "2019/02/03",
-            "Type": "Invoice",
-            "Status": "Pending"
+            "KEY": 1235,
+            "COMPANY": "lotus",
+            "DATE": "2019/01/02",
+            "TYPE": "Invoice",
+            "STATUS": "Active"
         },
         {
-            "Company": "themall",
-            "Date": "2019/03/04",
-            "Type": "PO",
-            "Status": "Reject"
+            "KEY": 1236,
+            "COMPANY": "themall",
+            "DATE": "2019-11-12",
+            "TYPE": "PO",
+            "STATUS": "Reject"
         }
     ]
 }

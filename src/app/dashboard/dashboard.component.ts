@@ -10,8 +10,8 @@ import { Myinterfacedata } from '../model';
 })
 export class DashboardComponent implements OnInit {
 
-  data: Myinterfacedata
-  list: Myinterfacedata[]
+  DASHBOARD_DATA: Myinterfacedata
+  DASHBOARD_LIST: Myinterfacedata[]
   constructor(
     private svc: PROCURETOPAYService,
 
@@ -19,21 +19,29 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.svc.dashboard()
-    .then(data => {
-      this.data = data
+    .then(DASHBOARD_DATA => {
+      this.DASHBOARD_DATA = DASHBOARD_DATA
     })
 
     this.svc.dashboardlist()
-    .then(list => {
-      this.list = list
+    .then(DASHBOARD_LIST => {
+      this.DASHBOARD_LIST = DASHBOARD_LIST
     })
   }
 
   // ngOnInit() {
   //   this.svc.dashboard()
-  //   .subscirb(data => {
-  //     this.data = data
+  //   .subscirb(STATUS => {
+  //     this.STATUS = STATUS
   //   })
-  //   console.log(JSON.stringify(this.data))
+
+  // this.svc.dashboardlist()
+  //   .subscirb(INFO => {
+  //     this.INFO = INFO
+  //   })
+  //   console.log(JSON.stringify(this.STATUS))
+  //   console.log(JSON.stringify(this.INFO))
   // }
+
+  
 }

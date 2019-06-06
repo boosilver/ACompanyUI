@@ -10,10 +10,10 @@ import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } 
 import {
   TransactionCreateInvoice,
   TransactionCreatePurchaseOrder,
-  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse,Reject,Myinterfacedata
+  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse, Reject, Myinterfacedata
 } from '../model';
 
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable()
 export class PROCURETOPAYService {
@@ -127,7 +127,7 @@ export class PROCURETOPAYService {
   }
   // -------------------------------------------------- End key -----------------------------------------------------------
 
-  
+
   // --------------------------------------------- Reject -----------------------------------------------------------
   Reject(model: Reject): Observable<any> {
     const url = environment.backendlotus + 'Reject';//asset.service.request
@@ -144,23 +144,25 @@ export class PROCURETOPAYService {
   // -------------------------------------------------- End key -----------------------------------------------------------
 
   dashboard() {
-    // const url = environment.backendBaseUrl + '/ccr/public/document';
-    const url = 'assets/config.json';
+    const url = environment.backendlotus + 'GetList';
+    // const url = 'assets/config.json';
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
     console.log(this.httpClient.get(url))
-    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata>res.data).then(data=>{return data;})
+    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata>res.DASHBOARD_DATA).then(DASHBOARD_DATA => { return DASHBOARD_DATA; })
   }
 
   dashboardlist() {
-    const url = 'assets/config.json';
+    const url = environment.backendlotus + 'GetList';
+    // const url = 'assets/config.json';
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
     console.log(this.httpClient.get(url))
-    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.list).then(list=>{return list;})
+    return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.DASHBOARD_LIST).then(DASHBOARD_LIST => { return DASHBOARD_LIST; })
   }
+
   // dashboard(): Observable<Myinterfacedata> {
-  //   const url = environment.backendBaseUrl + '/ccr/public/document';
+  //   const url = environment.backendlotus + 'GetList';
   //   // const url = 'assets/config.json';
   //   let headers = new Headers();
   //   this.createAuthorizationHeader(headers);

@@ -17,7 +17,7 @@
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="data">{{data.po}}</div>
+            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.PO}}</div>
             <div class="text-uppercase text-muted small">Purchase Order</div>
           </div>
           <!-- <div>
@@ -40,8 +40,8 @@
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="data">{{data.invoice}}</div>
-            <div class="text-uppercase text-muted small">Invoice</div>
+            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.PO_WAIT}}</div>
+            <div class="text-uppercase text-muted small">Purchase Order wait</div>
           </div>
           <!-- <div>
             <div class="text-value">459</div>
@@ -63,7 +63,7 @@
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="data">{{data.success}}</div>
+            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.INVOICE}}</div>
             <div class="text-uppercase text-muted small">Success</div>
           </div>
           <!-- <div>
@@ -86,7 +86,7 @@
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="data">{{data.failed}}</div>
+            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.INVOICE_WAIT}}</div>
             <div class="text-uppercase text-muted small">Wait</div>
           </div>
           <!-- <div>
@@ -103,6 +103,7 @@
     <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light  ">
       <thead>
         <tr>
+          <th>Key</th>
           <th>Company</th>
           <th>Date registered</th>
           <th>Type</th>
@@ -111,12 +112,13 @@
       </thead>
       <tbody>
         <!--  list คือตัวแปรของเรา -->
-        <tr *ngFor="let key of list">
-          <td>{{key.Company}}</td>
-          <td>{{key.Date}}</td>
-          <td>{{key.Type}}</td>
+        <tr *ngFor="let key of DASHBOARD_LIST">
+          <td>{{key.KEY}}</td>
+          <td>{{key.COMPANY}}</td>
+          <td>{{key.DATE}}</td>
+          <td>{{key.TYPE}}</td>
           <td>
-            <span class="badge badge-success">{{key.Status}}</span>
+            <span class="badge badge-success">{{key.STATUS}}</span>
           </td>
         </tr>
         <!-- <tr>
