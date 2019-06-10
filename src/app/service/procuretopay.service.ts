@@ -172,11 +172,16 @@ export class PROCURETOPAYService {
 
   dashboardlist(): Observable<Myinterfacedata> {
     const url = environment.backendlotus + 'GetList';
-    // const url = 'assets/config.json';
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    console.log(this.httpClient.get(url))
-    return this.httpClient.get<Myinterfacedata>(url)
+    return this.http.get(url, {
+      headers: headers
+    }).map((res: Response) => {
+      return res.json();
+      // return res.json()[0];
+    })
+      .catch(this.handleError);
   }
 
+  
 }

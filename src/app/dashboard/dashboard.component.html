@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showUI">
   <ngx-loading [show]="loading"></ngx-loading>
   <br>
   <div class="form-group row">
@@ -17,7 +17,7 @@
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.PO}}</div>
+            <div class="text-value" *ngIf="DASHBOARD$">{{DASHBOARD$.DASHBOARD_DATA.PO}}</div>
             <div class="text-uppercase text-muted small">Purchase Order</div>
           </div>
           <!-- <div>
@@ -33,14 +33,14 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-invoice">
-          <i class="fa fa-invoice"></i>
+          <!-- <i class="fa fa-invoice"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
-          </div>
+          </div> -->
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.PO_WAIT}}</div>
+            <div class="text-value" *ngIf="DASHBOARD$">{{DASHBOARD$.DASHBOARD_DATA.PO_WAIT}}</div>
             <div class="text-uppercase text-muted small">Purchase Order wait</div>
           </div>
           <!-- <div>
@@ -56,14 +56,14 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-success">
-          <i class="fa fa-success"></i>
+          <!-- <i class="fa fa-success"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
-          </div>
+          </div> -->
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.INVOICE}}</div>
+            <div class="text-value" *ngIf="DASHBOARD$">{{DASHBOARD$.DASHBOARD_DATA.INVOICE}}</div>
             <div class="text-uppercase text-muted small">Invoice</div>
           </div>
           <!-- <div>
@@ -79,14 +79,14 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-wait">
-          <i class="fa fa-wait"></i>
+          <!-- <i class="fa fa-wait"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
-          </div>
+          </div> -->
         </div>
         <div class="brand-card-body">
           <div>
-            <div class="text-value" *ngIf="DASHBOARD_DATA">{{DASHBOARD_DATA.INVOICE_WAIT}}</div>
+            <div class="text-value" *ngIf="DASHBOARD$">{{DASHBOARD$.DASHBOARD_DATA.INVOICE_WAIT}}</div>
             <div class="text-uppercase text-muted small">Invoice wait</div>
           </div>
           <!-- <div>
@@ -112,7 +112,7 @@
       </thead>
       <tbody>
         <!--  list คือตัวแปรของเรา -->
-        <tr *ngFor="let key of DASHBOARD_LIST">
+        <tr *ngFor="let key of DASHBOARD$.DASHBOARD_LIST">
           <td>{{key.KEY}}</td>
           <td>{{key.COMPANY}}</td>
           <td>{{key.DATE}}</td>

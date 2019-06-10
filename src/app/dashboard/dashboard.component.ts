@@ -10,9 +10,9 @@ import { Myinterfacedata } from '../model';
 })
 export class DashboardComponent implements OnInit {
 
-  DASHBOARD_DATA: Myinterfacedata
-  DASHBOARD_LIST: Myinterfacedata
+  DASHBOARD$: Myinterfacedata
   // DASHBOARD_LIST: Myinterfacedata[]
+  showUI = false;
 
   constructor(
     private svc: PROCURETOPAYService,
@@ -31,19 +31,17 @@ export class DashboardComponent implements OnInit {
   //   })
   // }
 
-  ngOnInit() {
-    this.svc.dashboard()
-    .subscribe(DASHBOARD_DATA => {
-      this.DASHBOARD_DATA = DASHBOARD_DATA
-    })
+  async ngOnInit() {
 
-  this.svc.dashboardlist()
-    .subscribe(DASHBOARD_LIST => {
-      this.DASHBOARD_LIST = DASHBOARD_LIST
-    })
-    console.log(JSON.stringify(this.DASHBOARD_DATA))
-    console.log(JSON.stringify(this.DASHBOARD_LIST))
+    await this.svc.dashboardlist()
+      .subscribe((DASHBOARD: Myinterfacedata) => {
+        // console.log('5555555555555555555555555555' + (JSON.stringify(DASHBOARD)))
+        this.DASHBOARD$ = DASHBOARD
+        // console.log('----------------------------' + (JSON.stringify(this.DASHBOARD$)))
+        if (this.DASHBOARD$) this.showUI = true;
+      })
+
   }
 
-  
+
 }

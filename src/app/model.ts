@@ -332,12 +332,25 @@ export class Reject {
 
 // ----------------------------------------- Dashboard ---------------------------------------------------------
 export interface Myinterfacedata {
-  DASHBOARD_DATA: string
-  KEY: string
+  DASHBOARD_DATA: DashboardData
+  DASHBOARD_LIST: DashboardList[]
+
+}
+
+export interface DashboardData {
+  PO: number
+  PO_WAIT: number
+  PO_COMPLETE: number
+  INVOICE: number
+  INVOICE_WAIT: number
+  INVOICE_COMPLETE: number
+}
+
+export interface DashboardList {
   COMPANY: string
   DATE: string
   TYPE: string
+  KEY: string
   STATUS: string
-
 }
 // ------------------------------------------------- END ---------------------------------------------------------
