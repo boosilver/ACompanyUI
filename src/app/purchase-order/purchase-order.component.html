@@ -50,7 +50,7 @@
     <br>
     <div class="row">
       <div class="field-label col-md-10 mx-auto">
-        <label for="DELIVERY_ADDRESS" class="text-muted">Delivery Address</label>
+        <label for="DELIVERY_ADDRESS" class="text-muted">Delivery Address *No need to enter value if default address</label>
         <textarea rows="2" cols="50" class="form-control border-bottom" [(ngModel)]="model.DELIVERY_ADDRESS"
           id="DELIVERY_ADDRESS" name="DELIVERY_ADDRESS"></textarea>
       </div>
@@ -67,12 +67,12 @@
       </div>
       <div class="field-label col-md-4 mx-auto">
         <label for="NUM_PRODUCT" class="text-muted">Product Amount</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
           name="NUM_PRODUCT">
       </div>
       <div class="field-label col-md-4 mx-auto">
         <label for="VALUE" class="text-muted">Price Amount</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
           name="VALUE">
       </div>
     </div>
@@ -182,7 +182,7 @@
       </div>
     </ng-template>
     <!-- ------------------------------------------------------------------------------ -->
-
+<br>
 
     <div class="row" id='statusfield' style='display:none;'>
       <div class="field-label col-md-12 mx-auto">
@@ -191,7 +191,7 @@
           name="status"></textarea>
       </div>
     </div>
-
+<br>
 
   </form>
 

@@ -42,8 +42,9 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   openModal(template: PurchaseOrderComponent) {
-    if (this.model.TO.trim() && this.model.PRODUCT.trim()
-      && this.model.NUM_PRODUCT && this.model.VALUE && this.model.EMAIL.trim()) {
+    if (this.model.TO.trim() && this.model.TEL_NUMBER.trim()  && this.model.PRODUCT.trim() 
+      && this.model.NUM_PRODUCT && this.model.VALUE && this.model.EMAIL.trim() && this.model.TAX_ID.trim()
+      && this.model.PAYMENT && this.model.DELIVERY_DATE) {
       this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
 
     }

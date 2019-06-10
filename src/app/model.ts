@@ -38,8 +38,8 @@ export class TransactionCreatePurchaseOrder {
     sample.PRODUCT = 'apple';
     sample.NUM_PRODUCT = '100';
     sample.VALUE = '250';
-    sample.DELIVERY_DATE = new Date('');
-    sample.PAYMENT = new Date('');
+    sample.DELIVERY_DATE = new Date('2019-06-15');
+    sample.PAYMENT = new Date('2019-06-18');
     sample.DETAIL = 'detail';
 
 

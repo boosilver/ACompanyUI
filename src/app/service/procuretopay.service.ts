@@ -112,9 +112,9 @@ export class PROCURETOPAYService {
   // -------------------------------------------------- End key -----------------------------------------------------------
 
 
-  // --------------------------------------------- Check Data key -----------------------------------------------------------
+  // --------------------------------------------- Check Data -----------------------------------------------------------
   InquirePOByKeyFields(model: InquirePOByKeyFields): Observable<any> {
-    const url = environment.backendlotus + 'Get';//asset.service.request
+    const url = environment.backendlotus + 'GetValue';//asset.service.request
     let headers = new Headers();      //http://localhost:7002/api/v1/Get
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
@@ -161,6 +161,8 @@ export class PROCURETOPAYService {
   //   return this.httpClient.get<any>(url).toPromise().then(res => <Myinterfacedata[]>res.DASHBOARD_LIST).then(DASHBOARD_LIST => { return DASHBOARD_LIST; })
   // }
 
+  // --------------------------------------------- Get Dashboard -----------------------------------------------------------
+
   dashboard(): Observable<Myinterfacedata> {
     const url = environment.backendlotus + 'GetList';
     // const url = 'assets/config.json';
@@ -182,6 +184,7 @@ export class PROCURETOPAYService {
     })
       .catch(this.handleError);
   }
+  // -------------------------------------------------- End  -----------------------------------------------------------
 
   
 }
