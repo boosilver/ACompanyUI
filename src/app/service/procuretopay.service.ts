@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } from '@angular/http';
 import {
   TransactionCreateInvoice,
-  TransactionCreatePurchaseOrder,
+  TransactionCreatePurchaseOrder,Acceptinvoice,
   InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse, Reject, Myinterfacedata
 } from '../model';
 
@@ -95,6 +95,20 @@ export class PROCURETOPAYService {
   }
   //  ----------------------------------- ------------------ --------------------------------------------------------
 
+  
+  //  ----------------------------------- Accept Invoice --------------------------------------------------------
+  submitAcceptinvoice(model: Acceptinvoice): Observable<any> {
+    const url = environment.backendlotus + 'Success_Invoice'; // transaction.submit.service.request
+    let headers = new Headers();       //http://localhost:7002/api/v1/Success_Invoice
+    this.createAuthorizationHeader(headers);
+    return this.http.post(url, model, {
+      headers: headers
+    }).map((res: Response) => {
+      return res.json();
+    })
+      .catch(this.handleError);
+  }
+  //  ----------------------------------- ------------------ --------------------------------------------------------
 
   // --------------------------------------------- Check Invoice key -----------------------------------------------------------
   InquireInvoiceByKeyFields(model: InquireInvoiceByKeyFields): Observable<any> {

@@ -1,0 +1,50 @@
+<div class="container">
+  <ngx-loading [show]="loading"></ngx-loading>
+<br>
+  <div class="form-group row">
+    <H1>ACCEPT INVOICE</H1>
+  </div>
+  <form ngNativeValidate>
+
+    <div class="row">
+      <div class="field-label col-md-6 mx-auto">
+        <label for="LOAN_KEY" class="text-muted">Key</label>
+        <input type="number" class="form-control " [(ngModel)]="model.KEY" id="KEY" name="KEY" required>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- ----------------------------------SUBMIT-------------------------------------- -->
+    <div class="row">
+      <div class="center">
+        <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
+          (click)="openModal(template)" style="text-shadow:1px 1px 0 #444">SUBMIT</button>
+      </div>
+    </div>
+
+    <ng-template #template>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header">
+      <p>KEY :{{this.model.KEY}}</p>
+    </pre>
+        <p>Do you want to confirm?</p>
+
+        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+      </div>
+    </ng-template>
+    <!-- ------------------------------------------------------------------------------ -->
+
+
+    <div class="row" id='statusfield' style='display:none;'>
+      <div class="field-label col-md-12 mx-auto">
+        <label for="status" class="text-muted">Status</label>
+        <textarea style="border: none; background-color: white" class="form-control border-bottom" readonly id="status"
+          name="status"></textarea>
+      </div>
+    </div>
+
+
+  </form>
+</div>

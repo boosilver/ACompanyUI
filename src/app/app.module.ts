@@ -24,6 +24,7 @@ import { LoanbyinvComponent } from './loanbyinv/loanbyinv.component';
 import { AcceptComponent } from './accept/accept.component';
 import { RejectComponent } from './reject/reject.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AcceptinvoiceComponent } from './acceptinvoice/acceptinvoice.component';
 
 //------- End Component ----------
 
@@ -38,6 +39,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AcceptComponent,
     RejectComponent,
     DashboardComponent,
+    AcceptinvoiceComponent,
 
 
 

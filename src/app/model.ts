@@ -221,6 +221,30 @@ export class Acceptendorse {
 }
 // ------------------------------------------------- END ---------------------------------------------------------
 
+
+// ----------------------------------------- Accept Invoice ---------------------------------------------------------
+export class Acceptinvoice {
+  static empty(): Acceptinvoice {
+    const emptyObj = empty(Acceptinvoice, 1);
+    return emptyObj;
+  }
+
+  static sampleSubmitSr(): Acceptinvoice {
+    const sample: Acceptinvoice = Acceptinvoice.empty();
+
+    sample.KEY = '1';
+
+    return sample;
+  }
+
+  constructor(
+
+    public KEY: string,
+
+  ) { }
+}
+// ------------------------------------------------- END ---------------------------------------------------------
+
 // ----------------------------------------- REJECT ---------------------------------------------------------
 export class Reject {
   static empty(): Reject {
