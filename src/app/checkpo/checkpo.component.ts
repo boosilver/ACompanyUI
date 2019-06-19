@@ -71,6 +71,7 @@ export class CheckpoComponent implements OnInit {
         "NUM_PRODUCT": result.INFO.NUM_PRODUCT,
         "VALUE": result.INFO.VALUE,
         "PRICE": result.INFO.PRICE,
+        "TAX_ID": result.INFO.TAX_ID,
         "VAT": result.INFO.VAT,
         "TOTAL_PRICE": result.INFO.TOTAL_PRICE,
         "DELIVERY_DATE": result.INFO.DELIVERY_DATE,
