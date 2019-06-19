@@ -177,7 +177,7 @@ export class PROCURETOPAYService {
 
   // --------------------------------------------- Get Dashboard -----------------------------------------------------------
 
-  dashboard(): Observable<Myinterfacedata> {
+  listinformation(): Observable<any> {
     const url = environment.backendlotus + 'GetList';
     // const url = 'assets/config.json';
     let headers = new Headers();

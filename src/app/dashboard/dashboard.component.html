@@ -9,7 +9,7 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-po">
-          <img src="../images/100.png">
+          <img src="../../assets/images/100.png" height="42" width="42">
           <!-- <i class="fa fa-po"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
@@ -100,7 +100,7 @@
 
     <!-- Table -->
     <br>
-    <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light  ">
+    <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light pointer ">
       <thead>
         <tr>
           <th>Key</th>
@@ -112,7 +112,7 @@
       </thead>
       <tbody>
         <!--  list คือตัวแปรของเรา -->
-        <tr *ngFor="let key of DASHBOARD$.DASHBOARD_LIST">
+        <tr (click)="openModal(template,key)" *ngFor="let key of DASHBOARD$.DASHBOARD_LIST">
           <td>{{key.KEY}}</td>
           <td>{{key.COMPANY}}</td>
           <td>{{key.DATE}}</td>
@@ -155,5 +155,34 @@
               </tr> -->
       </tbody>
     </table>
+    <ng-template #template>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+        <p style="text-align: right; margin-right:3px; font-weight: bold; font-size:24" *ngIf="this.body.BANK">{{this.body.BANK}}</p>
+        <p style="text-align: right; margin-right:3px; font-weight: bold; font-size:24" *ngIf="this.body.TYPE">{{this.body.TYPE}}</p>
+        <p style="text-align: right;" *ngIf="this.body.KEY">Document No :{{this.body.KEY}}</p>
+        <p style="text-align: right;" *ngIf="this.body.PO_KEY">Reference No :{{this.body.PO_KEY}}</p>
+        <p style="text-align: right;" *ngIf="this.body.DATE">Date :{{this.body.DATE}}</p>
+        <hr>
+        <p *ngIf="this.body.FROM">From :{{this.body.FROM}}</p>
+        <p *ngIf="this.body.TO">To :{{this.body.TO}}</p>
+        <p *ngIf="this.body.EMAIL">Email :{{this.body.EMAIL}}</p>
+        <p *ngIf="this.body.TEL_NUMBER">Tel Number :{{this.body.TEL_NUMBER}}</p>
+        <p *ngIf="this.body.TAX_ID">Tax ID :{{this.body.TAX_ID}}</p>
+        <p *ngIf="this.body.DELIVERY_ADDRESS">Delivery Address :{{this.body.DELIVERY_ADDRESS}}</p>
+        <p *ngIf="this.body.DELIVERY_DATE">Delivery Date :{{this.body.DELIVERY_DATE}}</p>
+        <p *ngIf="this.body.PAYMENT">Payment Date :{{this.body.PAYMENT}}</p>
+        <p *ngIf="this.body.ADDRESS">Address :{{this.body.ADDRESS}}</p>
+        <p *ngIf="this.body.PRODUCT">Product :{{this.body.PRODUCT}}</p>
+        <p *ngIf="this.body.NUM_PRODUCT">Number of Product :{{this.body.NUM_PRODUCT}}</p>
+        <p *ngIf="this.body.VALUE">Value :{{this.body.VALUE}}</p>
+        <p *ngIf="this.body.PRICE">Price :{{this.body.PRICE}}</p>
+        <p *ngIf="this.body.VAT">VAT :{{this.body.VAT}}</p>
+        <p *ngIf="this.body.TOTAL_PRICE">Total :{{this.body.TOTAL_PRICE}}</p>
+
+
+      </pre>
+      </div>
+    </ng-template>
   </div>
 </div>

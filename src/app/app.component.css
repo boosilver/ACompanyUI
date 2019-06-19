@@ -1,6 +1,10 @@
 .navbar li a {font-size:18px;  font-weight: bold}
 .navbar-brand {font-size:18px;  font-weight: bold}
 
+#company :hover{
+  background-color: #000000;
+  color: inherit;
+}
 body {
     font-family: 'Roboto', sans-serif;
     padding: 0;
@@ -192,7 +196,7 @@ body {
     }
   }
   
-  /* Keyframes บอสหัวดอออออ*/
+  /* Keyframes*/
   @-webkit-keyframes circle {
     0% {
       width: 1px;
