@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   bsModalRef: BsModalRef;
   body: any;
   key: any;
+  message: any;
 
   constructor(
     private svc: PROCURETOPAYService,
@@ -124,5 +125,36 @@ export class DashboardComponent implements OnInit {
 
     // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
 
+    
+  }
+
+  confirm(): void {
+    // this.model.KEY = this.model.KEY;
+   
+    console.log('reject DATA');
+    console.log('saving draft ' + JSON.stringify(this.key));
+    this.loading = true;
+    this.svc.Reject(this.key)
+            .subscribe(
+              sr =>{ 
+                this.loading = false;
+                let message = 'Reject Success';
+                (<HTMLInputElement>document.getElementById('status')).value = message;
+                console.log('reply:' + JSON.stringify(sr));
+                document.getElementById("statusfield").style.display = "block";
+                 
+              },
+              error => {
+                  this.loading = false;
+                  let header = 'Error';
+                  let message = error;
+                  (<HTMLInputElement>document.getElementById('status')).value = message;
+                  console.log('Error:' + message);
+                  document.getElementById("statusfield").style.display = "block";
+                  
+              });
+    this.message = 'Reject Confirm!';
+    this.modalRef.hide();
+    
   }
 }
