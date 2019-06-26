@@ -1,6 +1,7 @@
 import { Util } from '../util/util';
 var todate;
 import { Injectable } from '@angular/core';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 const construct = function (constructor, argsArray) {
 
@@ -30,7 +31,7 @@ export class TransactionCreatePurchaseOrder {
   static sampleSubmitSr(): TransactionCreatePurchaseOrder {
     const sample: TransactionCreatePurchaseOrder = TransactionCreatePurchaseOrder.empty();
 
-    sample.TO = 'lotus';
+    sample.TO = 'themall';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.TEL_NUMBER = '0982486331';
     sample.TAX_ID = '1234567891234';
@@ -104,7 +105,7 @@ export class TransactionCreateInvoice {
 // ------------------------------------------------- END ---------------------------------------------------------
 
 
-//  ---------------------------------------------- Check PO key ------------------------------------------------
+//  ---------------------------------------------- Check Dashboard list key ------------------------------------------------
 export class InquirePOByKeyFields {
   static empty(): InquirePOByKeyFields {
     const emptyObj = empty(InquirePOByKeyFields, 2);
@@ -114,7 +115,7 @@ export class InquirePOByKeyFields {
   static sampleSubmitSr(): InquirePOByKeyFields {
     const sample: InquirePOByKeyFields = InquirePOByKeyFields.empty();
 
-    sample.KEY = '100';
+    sample.KEY = 'themall';
     sample.TYPE = 'PO';
 
     return sample;
@@ -127,6 +128,33 @@ export class InquirePOByKeyFields {
   ) { }
 }
 //  ---------------------------------------------- END key -----------------------------------------------------------
+
+
+
+//  ---------------------------------------------- Inquire data key ------------------------------------------------
+export class InquireData {
+  static empty(): InquireData {
+    const emptyObj = empty(InquireData, 2);
+    return emptyObj;
+  }
+
+  static sampleSubmitSr(): InquireData {
+    const sample: InquireData = InquireData.empty();
+
+    sample.user = 'themall';
+    sample.TYPE = 'PO';
+
+    return sample;
+  }
+
+  constructor(
+    public user: string,
+    public TYPE: string,
+
+  ) { }
+}
+//  ---------------------------------------------- END key -----------------------------------------------------------
+
 
 //  ---------------------------------------------- Check Invoice key ------------------------------------------------
 export class InquireInvoiceByKeyFields {
@@ -168,7 +196,7 @@ export class Loanbyinv {
     sample.KEY = '1';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.TEL_NUMBER = '0982486331';
-    sample.BUSINESS_TYPE = 'PO';
+    sample.BUSINESS_TYPE = 'SERVICE_BUSINESS';
     sample.INCOME = '10000000';
     sample.GUARANTEE = '17000000';
     sample.LOAN_AMOUNT = '1000000';
@@ -255,8 +283,8 @@ export class Reject {
   static sampleSubmitSr(): Reject {
     const sample: Reject = Reject.empty();
 
-    sample.KEY = '123';
-    sample.TYPE = 'PO';
+    sample.KEY = '';
+    sample.TYPE = '';
 
     return sample;
   }
@@ -368,6 +396,8 @@ export interface DashboardData {
   INVOICE: number
   INVOICE_WAIT: number
   INVOICE_COMPLETE: number
+  LOAN_INFO_WAIT: number
+  ENDORSE_LOAN_WAIT: number
 }
 
 export interface DashboardList {
@@ -375,6 +405,30 @@ export interface DashboardList {
   DATE: string
   TYPE: string
   KEY: string
+  LOAN_KEY: string
   STATUS: string
+  _id: string
+  value: inquirevalue
 }
+
+export interface inquirevalue{
+   TO: string,
+   FROM: string,
+   TYPE: string,
+   ADDRESS: string,
+   PO_KEY: string,
+   EMAIL: string,
+   TEL_NUMBER: string,
+   TAX_ID: string,
+   DELIVERY_ADDRESS: string,
+   PRODUCT: string,
+   NUM_PRODUCT: string,
+   PRICE: string,
+   VAT: string,
+   VALUE: string,
+   TOTAL_PRICE: string,
+   DELIVERY_DATE: Date,
+   PAYMENT: Date,
+   DETAIL: string,
+} { }
 // ------------------------------------------------- END ---------------------------------------------------------

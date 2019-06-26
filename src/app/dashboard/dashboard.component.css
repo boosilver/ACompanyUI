@@ -50,6 +50,11 @@
   box-sizing: border-box;
 }
 
+.btn-default:hover{
+  color:inherit;
+  text-decoration: underline;
+}
+
 .font{
   font-weight: bold;
   color: rgb(60, 145, 194);

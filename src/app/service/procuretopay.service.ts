@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } from '@angular/http';
 import {
   TransactionCreateInvoice,
-  TransactionCreatePurchaseOrder,Acceptinvoice,
+  TransactionCreatePurchaseOrder,Acceptinvoice, InquireData,
   InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Acceptendorse, Reject, Myinterfacedata
 } from '../model';
 
@@ -126,10 +126,10 @@ export class PROCURETOPAYService {
   // -------------------------------------------------- End key -----------------------------------------------------------
 
 
-  // --------------------------------------------- Check Data -----------------------------------------------------------
+  // --------------------------------------------- Check Data Dashboard list-----------------------------------------------------------
   InquirePOByKeyFields(model: InquirePOByKeyFields): Observable<any> {
     const url = environment.backendlotus + 'GetValue';//asset.service.request
-    let headers = new Headers();      //http://localhost:7002/api/v1/Get
+    let headers = new Headers();      //http://localhost:7002/api/v1/GetValue
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -141,6 +141,22 @@ export class PROCURETOPAYService {
   }
   // -------------------------------------------------- End key -----------------------------------------------------------
 
+
+
+  // --------------------------------------------- Check Data inquire-----------------------------------------------------------
+  InquireData(model: InquireData): Observable<any> {
+    const url = environment.backendlotus + 'Getall';//asset.service.request
+    let headers = new Headers();      //http://localhost:7002/api/v1/Getall
+    this.createAuthorizationHeader(headers);
+    return this.http.post(url, model, {
+      headers: headers
+    }).map((res: Response) => {
+      return res.json();
+      // return res.json()[0];
+    })
+      .catch(this.handleError);
+  }
+  // -------------------------------------------------- End key -----------------------------------------------------------
 
   // --------------------------------------------- Reject -----------------------------------------------------------
   Reject(model: Reject): Observable<any> {

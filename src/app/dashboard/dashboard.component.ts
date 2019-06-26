@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
-import { Myinterfacedata, InquirePOByKeyFields } from '../model';
+import { Myinterfacedata, InquirePOByKeyFields, Reject } from '../model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Observable, interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class DashboardComponent implements OnInit {
 
+  private updateSubscription: Subscription;
   DASHBOARD$: Myinterfacedata
   // DASHBOARD_LIST: Myinterfacedata[]
   showUI = false;
@@ -48,6 +50,10 @@ export class DashboardComponent implements OnInit {
         this.DASHBOARD$ = DASHBOARD
         // console.log('----------------------------' + (JSON.stringify(this.DASHBOARD$)))
         if (this.DASHBOARD$) this.showUI = true;
+
+        // setTimeout(function () {
+        //   location.reload();
+        // }, 5000); // 5000 milliseconds means 5 seconds.
       })
 
   }
@@ -91,6 +97,7 @@ export class DashboardComponent implements OnInit {
           "TOTAL_AMOUNT": result.INFO.TOTAL_AMOUNT,
           "LOAN_KEY": result.INFO.LOAN_KEY,
           "INVOICE_KEY": result.INFO.INVOICE_KEY,
+          "PRICE_LOAN": result.INFO.PRICE_LOAN,
 
         }
 
@@ -120,41 +127,61 @@ export class DashboardComponent implements OnInit {
             console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
           }
         });
-    // console.log(JSON.stringify(template))
-    // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-
-    // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-
-    
   }
 
-  confirm(): void {
-    // this.model.KEY = this.model.KEY;
-   
-    console.log('reject DATA');
-    console.log('saving draft ' + JSON.stringify(this.key));
-    this.loading = true;
-    this.svc.Reject(this.key)
-            .subscribe(
-              sr =>{ 
-                this.loading = false;
-                let message = 'Reject Success';
-                (<HTMLInputElement>document.getElementById('status')).value = message;
-                console.log('reply:' + JSON.stringify(sr));
-                document.getElementById("statusfield").style.display = "block";
-                 
-              },
-              error => {
-                  this.loading = false;
-                  let header = 'Error';
-                  let message = error;
-                  (<HTMLInputElement>document.getElementById('status')).value = message;
-                  console.log('Error:' + message);
-                  document.getElementById("statusfield").style.display = "block";
-                  
-              });
-    this.message = 'Reject Confirm!';
+  async confirm(rejecttemplate: any) { //click reject
     this.modalRef.hide();
-    
+    console.log('reject DATA');
+    this.modalRef = this.modalService.show(rejecttemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+
   }
+
+  async confirmreject(successrejecttemplate: any) { //click ok to reject
+    console.log('saving draft ' + JSON.stringify(this.body));
+    this.loading = true;
+    this.modalRef.hide();
+    await this.svc.Reject(this.body)
+      .subscribe(
+        sr => {
+          this.loading = false;
+          console.log('saving draft ' + JSON.stringify(sr));
+          this.message = 'Reject Success';
+          this.modalRef = this.modalService.show(successrejecttemplate, { class: 'modal-dialog-centered modal-md fade show' });
+
+        },
+        error => {
+          this.loading = false;
+          let header = 'Error';
+          this.message = error;
+          console.log('Error:' + error);
+          this.modalRef = this.modalService.show(successrejecttemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+
+        });
+    // this.message = 'Reject Confirm!';
+  }
+
+  decline(template: any): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
+    this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' }); //back to template
+
+  }
+
+  Ok(): void {
+    this.message = 'Ok!';
+    this.modalRef.hide();
+    setTimeout(function () {
+      location.reload();
+    }, 1500); // 5000 milliseconds means 5 seconds.
+  }
+
+  // mouseEnter(div: string) {
+  //   console.log("mouse enter : " + div);
+  // }
+
+  // mouseLeave(div: string) {
+  //   console.log('mouse leave :' + div);
+  // }
 }
+
+

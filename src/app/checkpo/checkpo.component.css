@@ -16,6 +16,14 @@
     text-align:justify;
   }
 
+  td {
+    cursor : pointer
+  }
+ 
+#address{
+    white-space: pre-wrap;
+}
+  
 
 .active{
     font-weight: bold;
