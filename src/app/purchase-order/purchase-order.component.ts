@@ -4,6 +4,7 @@ import { TransactionCreatePurchaseOrder } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Util } from '../../util/util'
+import * as moment from 'moment'
 // import { TransactionCreatePurchaseOrder, FieldsReceipt, ListTreatment } from '.././model';
 
 @Component({
@@ -42,17 +43,17 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   openModal(template: PurchaseOrderComponent) {
-    if (this.model.TO.trim() && this.model.TEL_NUMBER.trim()  && this.model.PRODUCT.trim() 
+    if (this.model.TO.trim() && this.model.TEL_NUMBER.trim() && this.model.PRODUCT.trim()
       && this.model.NUM_PRODUCT && this.model.VALUE && this.model.EMAIL.trim() && this.model.TAX_ID.trim()
       && this.model.PAYMENT && this.model.DELIVERY_DATE) {
-      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+      this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' });
 
     }
     // this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
 
   }
 
-  confirm(): void {
+  confirm(resulttemplate: any, errortemplate: any): void {
     this.model.TO = this.model.TO.trim();
     this.model.EMAIL = this.model.EMAIL.trim();
     this.model.NUM_PRODUCT = this.model.NUM_PRODUCT;
@@ -61,8 +62,8 @@ export class PurchaseOrderComponent implements OnInit {
     this.model.DELIVERY_ADDRESS = this.model.DELIVERY_ADDRESS.trim();
     this.model.PRODUCT = this.model.PRODUCT.trim();
     this.model.VALUE = this.model.VALUE;
-    this.model.DELIVERY_DATE = new Date(this.model.DELIVERY_DATE);
-    this.model.PAYMENT = new Date(this.model.PAYMENT);
+    this.model.DELIVERY_DATE = moment().add(0, 'days').format('DD/MM/YYYY')
+    this.model.PAYMENT = moment().add(0, 'days').format('DD/MM/YYYY')
     // this.model.receipt = FieldsReceipt.empty();
     this.model.DETAIL = this.model.DETAIL.trim();
 
@@ -78,21 +79,20 @@ export class PurchaseOrderComponent implements OnInit {
       .subscribe(
         sr => {
           this.loading = false;
-          let message = 'Success';
-          (<HTMLInputElement>document.getElementById('status')).value = message;
-          console.log('reply:' + JSON.stringify(sr));
-          document.getElementById("statusfield").style.display = "block";
+          console.log('saving draft ' + JSON.stringify(sr));
+          this.message = 'Create Purchase Order Success';
+          this.modalRef = this.modalService.show(resulttemplate, { class: 'modal-dialog-centered modal-md fade show' });
 
         },
         error => {
           this.loading = false;
-
-          let header = 'Error';
-          // this.progressDialog.close();
-          let message = error;
-          (<HTMLInputElement>document.getElementById('status')).value = message;
-          console.log('Error:' + message);
-          document.getElementById("statusfield").style.display = "block";
+          // let header = 'Error';
+          // let message = error;
+          // (<HTMLInputElement>document.getElementById('status')).value = message;
+          // document.getElementById("statusfield").style.display = "block";
+          this.message = error;
+          console.log('Error:' + error);
+          this.modalRef = this.modalService.show(errortemplate, { class: 'modal-dialog-centered modal-lg fade show' });
 
         });
     this.message = 'Confirmed!';
@@ -101,6 +101,11 @@ export class PurchaseOrderComponent implements OnInit {
 
   decline(): void {
     this.message = 'Declined!';
+    this.modalRef.hide();
+  }
+
+  Ok(): void {
+    this.message = 'Ok!';
     this.modalRef.hide();
   }
 

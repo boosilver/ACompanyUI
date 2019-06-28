@@ -9,12 +9,12 @@
 
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
-        <label for="BANK" class="text-muted">BANK</label>
+        <label for="BANK" class="text-muted">Bank</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.BANK" id="BANK" name="BANK">
       </div>
 
       <div class="field-label col-md-4 mx-auto">
-        <label for="DOC_LOAN" class="text-muted">DOCUMENT LOAN</label>
+        <label for="DOC_LOAN" class="text-muted">Document Type</label>
         <select class="form-control" required [(ngModel)]="model.DOC_LOAN" [name]="DOC_LOAN" id="DOC_LOAN"
           [ngModelOptions]="{standalone: true}">
           <option value="PO">Purchase Order</option>
@@ -26,12 +26,12 @@
 
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
-        <label for="KEY" class="text-muted">DOCUMENT KEY</label>
+        <label for="KEY" class="text-muted">Document Key</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.KEY" id="KEY" name="KEY">
       </div>
 
       <div class="field-label col-md-4 mx-auto">
-        <label for="EMAIL" class="text-muted">E-mail</label>
+        <label for="EMAIL" class="text-muted">Email</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.EMAIL" id="EMAIL"
           name="EMAIL">
       </div>
@@ -49,8 +49,11 @@
         <label for="BUSINESS_TYPE" class="text-muted">Business type</label>
         <select class="form-control" required [(ngModel)]="model.BUSINESS_TYPE" [name]="BUSINESS_TYPE"
           id="BUSINESS_TYPE" [ngModelOptions]="{standalone: true}">
-          <option value="PO">Purchase Order</option>
-          <option value="INVOICE">Invoice</option>
+          <option value="Service_Business">Service Business</option>
+          <option value="Merchandising_Business">Merchandising Business</option>
+          <option value="Manufacturing_Business">Manufacturing Business</option>
+          <option value="Hybrid_Business">Hybrid Business</option>
+          <option value="Other">Other</option>
         </select>
       </div>
     </div>
@@ -58,12 +61,13 @@
 
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
-        <label for="INCOME" class="text-muted">Income</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INCOME" id="INCOME" name="INCOME">
+        <label for="INCOME" class="text-muted">Money Income</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INCOME" id="INCOME"
+          name="INCOME">
       </div>
 
       <div class="field-label col-md-4 mx-auto">
-        <label for="GUARANTEE" class="text-muted">Guarantee</label>
+        <label for="GUARANTEE" class="text-muted">Company Certificate</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.GUARANTEE" id="GUARANTEE"
           name="GUARANTEE">
       </div>
@@ -71,14 +75,15 @@
 
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
-        <label for="LOAN_AMOUNT" class="text-muted">Loan amount</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.LOAN_AMOUNT" id="LOAN_AMOUNT" name="LOAN_AMOUNT">
+        <label for="LOAN_AMOUNT" class="text-muted">Loan Amount</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.LOAN_AMOUNT"
+          id="LOAN_AMOUNT" name="LOAN_AMOUNT">
       </div>
 
       <div class="field-label col-md-4 mx-auto">
-        <label for="INSTALLMENT" class="text-muted">Installment</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INSTALLMENT" id="INSTALLMENT"
-          name="INSTALLMENT">
+        <label for="INSTALLMENT" class="text-muted">Installment Price (per year)</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.INSTALLMENT"
+          id="INSTALLMENT" name="INSTALLMENT">
       </div>
     </div>
     <hr>
@@ -93,36 +98,48 @@
 
     <ng-template #template>
       <div class="modal-body text-center">
-        <pre class="card card-block card-header">
-      <p>BANK :{{this.model.BANK.trim()}}</p>
-      <p>DOCUMENT LOAN :{{this.model.DOC_LOAN.trim()}}</p>
-      <p>DOCUMENT KEY :{{this.model.KEY}}</p>
-      <p>DOCUMENT EMAIL :{{this.model.EMAIL.trim()}}</p>
-      <p>DOCUMENT TEL :{{this.model.TEL_NUMBER}}</p>
-      <p>DOCUMENT BUSINESS TYPE :{{this.model.BUSINESS_TYPE.trim()}}</p>
-      <p>DOCUMENT INCOME :{{this.model.INCOME}}</p>
-      <p>GUARANTEE :{{this.model.GUARANTEE}}</p>
-      <p>LOAN AMOUNT :{{this.model.LOAN_AMOUNT}}</p>
-      <p>INSTALLMENT :{{this.model.INSTALLMENT}}</p>
+        <pre class="card card-block card-header text-left">
+      <p><span class="font">Bank :</span> {{this.model.BANK.trim()}}</p>
+      <p><span class="font">Document Type :</span> {{this.model.DOC_LOAN.trim()}}</p>
+      <p><span class="font">Document Key :</span> {{this.model.KEY}}</p>
+      <p><span class="font">Email :</span>{{this.model.EMAIL.trim()}}</p>
+      <p><span class="font">Tel Number :</span> {{this.model.TEL_NUMBER}}</p>
+      <p><span class="font">Business Type :</span> {{this.model.BUSINESS_TYPE.trim()}}</p>
+      <p><span class="font">Money Income :</span> {{this.model.INCOME}}</p>
+      <p><span class="font">Company Certificate :</span> {{this.model.GUARANTEE}}</p>
+      <p><span class="font">Loan Amount :</span> {{this.model.LOAN_AMOUNT}}</p>
+      <p><span class="font">Installment Price per Year :</span> {{this.model.INSTALLMENT}}</p>
 
     </pre>
         <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-primary" (click)="confirm(resulttemplate,errortemplate)">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline()">No</button>
+      </div>
+    </ng-template>
 
-        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+    <!-- ------------------------------------------------------------------------------ -->
+    <br>
+    <ng-template #resulttemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+            <p style="color:rgb(0, 0, 0); text-align: center " >{{message}}</p>
+              </pre>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+      </div>
+    </ng-template>
+    
+    <br>
+    <ng-template #errortemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+            <p style="color:rgb(255, 0, 0); text-align: center" >error: {{message}}</p>
+              </pre>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
       </div>
     </ng-template>
     <!-- ------------------------------------------------------------------------------ -->
-
-
-    <div class="row" id='statusfield' style='display:none;'>
-      <div class="field-label col-md-12 mx-auto">
-        <label for="status" class="text-muted">Status</label>
-        <textarea style="border: none; background-color: white" class="form-control border-bottom" readonly id="status"
-          name="status"></textarea>
-      </div>
-    </div>
-
 
   </form>
 </div>

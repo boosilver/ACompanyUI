@@ -54,29 +54,6 @@ export class CheckpoComponent implements OnInit {
         console.log('result : ' + JSON.stringify(result));
         this.jasontree = JSON.stringify(result);
         this.responseValue = []; //new Array(result[0].INVOICE)
-        // let body = {
-        //   "TO": result.INFO.TO,
-        //   "FROM": (result.INFO.FROM),
-        //   "TYPE": (result.INFO.TYPE),
-        //   "PO_KEY": result.INFO.PO_KEY,
-        //   "ADDRESS": result.INFO.ADDRESS,
-        //   "EMAIL": result.INFO.EMAIL,
-        //   "TEL_NUMBER": result.INFO.TEL_NUMBER,
-        //   "DELIVERY_ADDRESS": result.INFO.DELIVERY_ADDRESS,
-        //   "PRODUCT": result.INFO.PRODUCT,
-        //   "NUM_PRODUCT": result.INFO.NUM_PRODUCT,
-        //   "VALUE": result.INFO.VALUE,
-        //   "PRICE": result.INFO.PRICE,
-        //   "TAX_ID": result.INFO.TAX_ID,
-        //   "VAT": result.INFO.VAT,
-        //   "TOTAL_PRICE": result.INFO.TOTAL_PRICE,
-        //   "DELIVERY_DATE": result.INFO.DELIVERY_DATE,
-        //   "PAYMENT": result.INFO.PAYMENT,
-        //   "DETAIL": result.INFO.DETAIL,
-
-        // }
-        // this.responseValue.push(body);
-
         this.responseValueEN = [];
 
         //document.getElementById("result").style.display = "block";

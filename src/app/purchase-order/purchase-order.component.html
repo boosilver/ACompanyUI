@@ -43,21 +43,22 @@
       </div>
     </div>
 
-    
+
 
     <!-- --------------------------------------------------------------------------------------------------------------- -->
     <hr>
     <br>
     <div class="row">
       <div class="field-label col-md-10 mx-auto">
-        <label for="DELIVERY_ADDRESS" class="text-muted">Delivery Address *No need to enter value if default address</label>
+        <label for="DELIVERY_ADDRESS" class="text-muted">Delivery Address *If not input address are default
+          address</label>
         <textarea rows="2" cols="50" class="form-control border-bottom" [(ngModel)]="model.DELIVERY_ADDRESS"
           id="DELIVERY_ADDRESS" name="DELIVERY_ADDRESS"></textarea>
       </div>
     </div>
 
-     <!-- --------------------------------------------------------------------------------------------------------------- -->
-     <hr>
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+    <hr>
     <br>
     <div class="row col-md-10 mx-auto">
       <div class="field-label col-md-4 mx-auto">
@@ -66,26 +67,26 @@
           name="PRODUCT">
       </div>
       <div class="field-label col-md-4 mx-auto">
-        <label for="NUM_PRODUCT" class="text-muted">Product Amount</label>
-        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
-          name="NUM_PRODUCT">
+        <label for="NUM_PRODUCT" class="text-muted">Number of Product</label>
+        <input type="number" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT"
+          id="NUM_PRODUCT" name="NUM_PRODUCT">
       </div>
       <div class="field-label col-md-4 mx-auto">
-        <label for="VALUE" class="text-muted">Price Amount</label>
+        <label for="VALUE" class="text-muted">Price per product</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
           name="VALUE">
       </div>
     </div>
 
-     <!-- --------------------------------------------------------------------------------------------------------------- -->
-     <hr>
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+    <hr>
 
     <br>
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
         <label for="DELIVERY_DATE" class="text-muted">DELIVERY DATE</label>
         <input type="date" class="form-control border-bottom" required [(ngModel)]="model.DELIVERY_DATE"
-          id="DELIVERY_DATE" name="DELIVERY_DATE" >
+          id="DELIVERY_DATE" name="DELIVERY_DATE">
       </div>
 
       <div class="field-label col-md-4 mx-auto">
@@ -94,7 +95,7 @@
           name="PAYMENT">
       </div>
     </div>
-<!-- 
+    <!-- 
     <div class="form-group row">
       <B>Product<span class="required-field"></span></B>
     </div>
@@ -147,11 +148,11 @@
     <div class="row">
       <div class="field-label col-md-10 mx-auto">
         <label for="DETAIL" class="text-muted">Other</label>
-        <textarea rows="4" cols="50" class="form-control border-bottom" [(ngModel)]="model.DETAIL"
-          id="DETAIL" name="DETAIL"></textarea>
+        <textarea rows="4" cols="50" class="form-control border-bottom" [(ngModel)]="model.DETAIL" id="DETAIL"
+          name="DETAIL"></textarea>
       </div>
     </div>
-<hr>
+    <hr>
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
     <div class="row">
       <div class="center">
@@ -163,27 +164,50 @@
     <ng-template #template>
       <div class="modal-body text-center">
         <pre class="card card-block card-header text-left">
-        <p>TO :{{this.model.TO.trim()}}</p>
-        <p>EMAIL :{{this.model.EMAIL.trim()}}</p>
-        <p>TELNUMBER :{{this.model.TEL_NUMBER}}</p>
-        <p>TAX ID :{{this.model.TAX_ID}}</p>
-        <p>DELIVERY ADDRESS :{{this.model.DELIVERY_ADDRESS.trim()}}</p>
-        <p>PRODUCT :{{this.model.PRODUCT.trim()}}</p>
-        <p>NUMBER OF PRODUCT :{{this.model.NUM_PRODUCT}}</p>
-        <p>VALUE :{{this.model.VALUE}}</p>
-        <p>DELIVERY DATE :{{this.model.DELIVERY_DATE}}</p>
-        <p>PAYMENT DATE :{{this.model.PAYMENT}}</p>
+        <p><span class="font">To :</span> {{this.model.TO.trim()}}</p>
+        <p><span class="font">Email :</span> {{this.model.EMAIL.trim()}}</p>
+        <p><span class="font">Tel Number :</span> {{this.model.TEL_NUMBER}}</p>
+        <p><span class="font">Tax ID :</span> {{this.model.TAX_ID}}</p>
+        <p id = "address"><span class="font">Delivery Address :</span> {{this.model.DELIVERY_ADDRESS.trim()}}</p>
+        <p><span class="font">Product :</span> {{this.model.PRODUCT.trim()}}</p>
+        <p><span class="font">Number of Product:</span> {{this.model.NUM_PRODUCT}}</p>
+        <p><span class="font">Price per Product :</span> {{this.model.VALUE}}</p>
+        <p id = "address"><span class="font">Delivery Date :</span> {{this.model.DELIVERY_DATE}}</p>
+        <p id = "address"><span class="font">Payment Date :</span> {{this.model.PAYMENT}}</p>
 
 
       </pre>
         <p>Do you want to confirm?</p>
-        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+        <button type="button" class="btn btn-primary" (click)="confirm(resulttemplate,errortemplate)">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline()">No</button>
+      </div>
+    </ng-template>
+
+    <!-- ------------------------------------------------------------------------------ -->
+    <br>
+    <ng-template #resulttemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+            <p style="color:rgb(0, 0, 0); text-align: center " >{{message}}</p>
+              </pre>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+      </div>
+    </ng-template>
+    
+    <br>
+    <ng-template #errortemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+            <p style="color:rgb(255, 0, 0); text-align: center" >error: {{message}}</p>
+              </pre>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
       </div>
     </ng-template>
     <!-- ------------------------------------------------------------------------------ -->
-<br>
-
+    <br>
+    <!-- 
     <div class="row" id='statusfield' style='display:none;'>
       <div class="field-label col-md-12 mx-auto">
         <label for="status" class="text-muted">Status</label>
@@ -191,7 +215,7 @@
           name="status"></textarea>
       </div>
     </div>
-<br>
+<br> -->
 
   </form>
 

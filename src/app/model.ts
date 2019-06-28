@@ -2,6 +2,8 @@ import { Util } from '../util/util';
 var todate;
 import { Injectable } from '@angular/core';
 import { ValueTransformer } from '@angular/compiler/src/util';
+import * as moment from 'moment'
+
 
 const construct = function (constructor, argsArray) {
 
@@ -39,8 +41,8 @@ export class TransactionCreatePurchaseOrder {
     sample.PRODUCT = 'apple';
     sample.NUM_PRODUCT = '100';
     sample.VALUE = '250';
-    sample.DELIVERY_DATE = new Date('2019-06-15');
-    sample.PAYMENT = new Date('2019-06-18');
+    sample.DELIVERY_DATE = moment().add(0, 'days').format('DD-MM-YYYY')
+    sample.PAYMENT = moment().add(0, 'days').format('DD-MM-YYYY')
     sample.DETAIL = 'detail';
 
 
@@ -56,8 +58,8 @@ export class TransactionCreatePurchaseOrder {
     public PRODUCT: string,
     public NUM_PRODUCT: string,
     public VALUE: string,
-    public DELIVERY_DATE: Date,
-    public PAYMENT: Date,
+    public DELIVERY_DATE: any,
+    public PAYMENT: any,
     // public receipt: FieldsReceipt,
     public DETAIL: string,
 
@@ -77,7 +79,7 @@ export class TransactionCreateInvoice {
 
     sample.TO = 'themall';
     sample.EMAIL = 'bossza555@hotmail.com';
-    sample.DELIVERY_ADDRESS = '123 Empirestate';
+    sample.DELIVERY_DATE = moment().add(0, 'days').format('DD-MM-YYYY')
     sample.TEL_NUMBER = '0982486331';
     sample.PO_KEY = '100';
     sample.PRODUCT = 'apple';
@@ -93,7 +95,7 @@ export class TransactionCreateInvoice {
     public TO: string,
     public EMAIL: string,
     public TEL_NUMBER: string,
-    public DELIVERY_ADDRESS: string,
+    public DELIVERY_DATE: any,
     public PO_KEY: string,
     public PRODUCT: string,
     public NUM_PRODUCT: string,
@@ -115,7 +117,7 @@ export class InquirePOByKeyFields {
   static sampleSubmitSr(): InquirePOByKeyFields {
     const sample: InquirePOByKeyFields = InquirePOByKeyFields.empty();
 
-    sample.KEY = 'themall';
+    sample.KEY = '100';
     sample.TYPE = 'PO';
 
     return sample;
@@ -196,7 +198,7 @@ export class Loanbyinv {
     sample.KEY = '1';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.TEL_NUMBER = '0982486331';
-    sample.BUSINESS_TYPE = 'SERVICE_BUSINESS';
+    sample.BUSINESS_TYPE = 'Service_Business';
     sample.INCOME = '10000000';
     sample.GUARANTEE = '17000000';
     sample.LOAN_AMOUNT = '1000000';

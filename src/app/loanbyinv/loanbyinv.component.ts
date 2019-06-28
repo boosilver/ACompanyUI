@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Loanbyinv } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import {Util} from '../../util/util'
+import { Util } from '../../util/util'
 
 
 @Component({
@@ -25,19 +25,19 @@ export class LoanbyinvComponent implements OnInit {
 
   ngOnInit() {
     var that = this;
-        // setTimeout(function(){
-            that.model = Loanbyinv.sampleSubmitSr();
+    // setTimeout(function(){
+    that.model = Loanbyinv.sampleSubmitSr();
   }
   openModal(template: LoanbyinvComponent) {
     if (this.model.BANK.trim() && this.model.DOC_LOAN.trim() && this.model.KEY) {
-      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+      this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' });
 
     }
   }
 
-  confirm(): void {
-    this.model.BANK=this.model.BANK.trim();
-    this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
+  confirm(resulttempalte: any, errortemplate: any): void {
+    this.model.BANK = this.model.BANK.trim();
+    this.model.DOC_LOAN = this.model.DOC_LOAN.trim();
     this.model.KEY = this.model.KEY;
     this.model.EMAIL = this.model.EMAIL.trim();
     this.model.TEL_NUMBER = this.model.TEL_NUMBER;
@@ -47,37 +47,40 @@ export class LoanbyinvComponent implements OnInit {
     this.model.LOAN_AMOUNT = this.model.LOAN_AMOUNT;
     this.model.INSTALLMENT = this.model.INSTALLMENT;
 
-    
+
     console.log('Loanbyinv DATA');
     console.log('saving draft ' + JSON.stringify(this.model));
     this.loading = true;
     this.svc.submitLoanbyInvoice(this.model)
-            .subscribe(
-            sr => {
-              this.loading = false;
-              let message = 'Success';
-              (<HTMLInputElement>document.getElementById('status')).value = message;
-              console.log('reply:' + JSON.stringify(sr));
-              document.getElementById("statusfield").style.display = "block";
-               
-            },
-            error => {
-              this.loading = false;
+      .subscribe(
+        sr => {
+          this.loading = false;
+          console.log('saving draft ' + JSON.stringify(sr));
+          this.message = 'Create Loan Success';
+          this.modalRef = this.modalService.show(resulttempalte, { class: 'modal-dialog-centered modal-md fade show' });
 
-                let header = 'Error';
-                // this.progressDialog.close();
-                let message = error;
-                (<HTMLInputElement>document.getElementById('status')).value = message;
-                console.log('Error:' + message);
-                document.getElementById("statusfield").style.display = "block";
-                
-            });
+        },
+        error => {
+          this.loading = false;
+          // let header = 'Error';
+          // let message = error;
+          // (<HTMLInputElement>document.getElementById('status')).value = message;
+          // document.getElementById("statusfield").style.display = "block";
+          this.message = error;
+          console.log('Error:' + error);
+          this.modalRef = this.modalService.show(errortemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+
+        });
     this.message = 'Confirmed!';
     this.modalRef.hide();
   }
 
   decline(): void {
     this.message = 'Declined!';
+    this.modalRef.hide();
+  }
+  Ok(): void {
+    this.message = 'Ok!';
     this.modalRef.hide();
   }
 }

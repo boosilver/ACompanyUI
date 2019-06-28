@@ -4,6 +4,18 @@
     font-size:20px;
 }
 
+
+.font{
+    font-weight: bold;
+    color: rgb(60, 145, 194);
+  }
+  
+  #address{
+    white-space: pre-wrap;
+    /* width:100px; */
+    /* word-wrap:break-word; */
+  }
+  
 element.style {
     text-shadow: 1px 1px 0 #444;
 }
@@ -68,10 +80,10 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
-#boss{
+/* #boss{ */
     
     /* background-color: rgb(42, 42, 42);
     margin-left:15%;
     margin-right:15%;
     margin-bottom: 50%; */
-}
+/* } */

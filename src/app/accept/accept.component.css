@@ -22,6 +22,18 @@ element.style {
     white-space: nowrap;
     font-weight: bold;
 }
+
+.font{
+    font-weight: bold;
+    color: rgb(60, 145, 194);
+  }
+  
+  #address{
+    white-space: pre-wrap;
+    /* width:100px; */
+    /* word-wrap:break-word; */
+  }
+  
 .w3-round, .w3-round-medium {
     border-radius: 4px;
 }
