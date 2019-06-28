@@ -52,7 +52,7 @@ import { AcceptinvoiceComponent } from './acceptinvoice/acceptinvoice.component'
     RouterModule.forRoot(AppRoutes),
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.wanderingCubes,
-      backdropBackgroundColour: 'rgba(255,255,255,0.3)',
+      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
       backdropBorderRadius: '4px',
       primaryColour: '#FF6666',
       secondaryColour: '#FF6633',

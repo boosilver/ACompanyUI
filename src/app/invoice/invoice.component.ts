@@ -79,5 +79,8 @@ export class InvoiceComponent implements OnInit {
     this.message = 'Ok!';
     this.modalRef.hide();
   }
-  
+  Oknorefresh(): void {
+    this.message = 'Ok!';
+    this.modalRef.hide();
+  }
 }

@@ -108,7 +108,10 @@ export class PurchaseOrderComponent implements OnInit {
     this.message = 'Ok!';
     this.modalRef.hide();
   }
-
+  Oknorefresh(): void {
+    this.message = 'Ok!';
+    this.modalRef.hide();
+  }
   // addReceiptTreatment() {
 
   //   if (this.receipt.treatment === null) {

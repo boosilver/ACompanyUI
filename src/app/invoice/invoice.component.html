@@ -14,7 +14,7 @@
       </div>
 
       <div class="field-label col-md-4 mx-auto">
-        <label for="EMAIL" class="text-muted">E-mail</label>
+        <label for="EMAIL" class="text-muted">Email</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.EMAIL" id="EMAIL"
           name="EMAIL">
       </div>
@@ -35,6 +35,7 @@
       </div>
     </div>
     <hr>
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
 
     <div class="row col-md-10 mx-auto">
       <div class="field-label col-md-4 mx-auto">
@@ -43,17 +44,18 @@
           name="PRODUCT">
       </div>
       <div class="field-label col-md-4 mx-auto">
-        <label for="NUM_PRODUCT" class="text-muted">Product Amount</label>
+        <label for="NUM_PRODUCT" class="text-muted">Number of Product</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT"
           name="NUM_PRODUCT">
       </div>
       <div class="field-label col-md-4 mx-auto">
-        <label for="VALUE" class="text-muted">Price Amount</label>
+        <label for="VALUE" class="text-muted">Price per product</label>
         <input type="text" class="form-control border-bottom" required [(ngModel)]="model.VALUE" id="VALUE"
           name="VALUE">
       </div>
     </div>
     <hr>
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
 
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
@@ -106,10 +108,14 @@
             <p style="color:rgb(0, 0, 0); text-align: center " >{{message}}</p>
               </pre>
         <br>
-        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+        <button type="button" class="btn btn-primary" (click)="Ok()">
+          <a style="color:white" [routerLink]="['/dashboard']">
+            Ok
+          </a>
+        </button>
       </div>
     </ng-template>
-    
+
     <br>
     <ng-template #errortemplate>
       <div class="modal-body text-center">
@@ -117,7 +123,7 @@
             <p style="color:rgb(255, 0, 0); text-align: center" >error: {{message}}</p>
               </pre>
         <br>
-        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+        <button type="button" class="btn btn-primary" (click)="Oknorefresh()">Ok</button>
       </div>
     </ng-template>
     <!-- ------------------------------------------------------------------------------ -->
