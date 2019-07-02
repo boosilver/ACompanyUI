@@ -5,7 +5,7 @@ import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Util } from '../../util/util'
 import * as moment from 'moment'
-// import { TransactionCreatePurchaseOrder, FieldsReceipt, ListTreatment } from '.././model';
+// import {  FieldsReceipt, ListTreatment } from '.././model';
 
 @Component({
   selector: 'app-purchase-order',

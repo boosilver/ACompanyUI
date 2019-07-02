@@ -192,11 +192,19 @@
         <p *ngIf="this.body.DOC_LOAN"><span class="font">Document Type :</span>{{this.body.DOC_LOAN}}</p>
 
       </pre>
-
-        <button style="background-color: red; color:white;" type="button" class="btn btn-default" (click)="confirm(rejecttemplate)">reject</button>
+        <!-- Accept Invoice -->
+        <button *ngIf="this.showAccept" style="color:rgb(255, 224, 224); margin-right: 10px;" type="button"
+          class="btn btn-primary" (click)="acceptbutton(accepttemplate)">Accept</button>
+        <!-- Accept Loan -->
+        <button *ngIf="this.showAcceptLoan" style="color:rgb(255, 224, 224); margin-right: 10px;" type="button"
+          class="btn btn-primary" (click)="acceptloanbutton(acceptLoantemplate)">Accept</button>
+        <!-- Reject -->
+        <button style="background-color: red; color:white;" type="button" class="btn btn-default"
+          (click)="confirm(rejecttemplate)">reject</button>
       </div>
     </ng-template>
 
+    <!-- Reject modal popup -->
     <ng-template style="display: block" #rejecttemplate>
       <div class="modal-body text-center">
         <pre class="card card-block card-header text-left">
@@ -204,20 +212,59 @@
           <p style="color:red; text-align: center">Do you want to reject?</p>
             </pre>
 
-        <button type="button" class="btn btn-primary" (click)="confirmreject(successrejecttemplate)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="confirmreject(successtemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
+    <!-- End popup -->
 
-    <ng-template #successrejecttemplate>
+    <!-- Accept Invoice modal popup -->
+    <ng-template style="display: block" #accepttemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+          <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Invoice?</p>
+            </pre>
+        <button type="button" class="btn btn-primary" (click)="confirmaccept(successtemplate)">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
+      </div>
+    </ng-template>
+    <!-- End popup -->
+
+     <!-- Accept Loan modal popup -->
+     <ng-template style="display: block" #acceptLoantemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+          <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Document?</p>
+            </pre>
+        <button type="button" class="btn btn-primary" (click)="confirmacceptLoan(successtemplate)">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
+      </div>
+    </ng-template>
+    <!-- End popup -->
+
+
+    <!-- successtemplate popup -->
+    <ng-template #successtemplate>
+      <div class="modal-body text-center">
+        <pre class="card card-block card-header text-left">
+            <p style="color:rgb(0, 0, 0); text-align: center" >{{message}}</p>
+              </pre>
+        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+      </div>
+    </ng-template>
+    <!-- End popup -->
+
+    <!-- error popup -->
+    <ng-template #errortemplate>
       <div class="modal-body text-center">
         <pre class="card card-block card-header text-left">
             <p style="color:red; text-align: center" >{{message}}</p>
               </pre>
-
-        <button type="button" class="btn btn-primary" (click)="Ok()">Ok</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Ok</button>
       </div>
     </ng-template>
+    <!-- End popup -->
+
     <!-- 
     <div (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
       <h2>Div A</h2>

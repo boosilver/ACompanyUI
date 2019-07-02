@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
-import { Myinterfacedata, InquirePOByKeyFields, Reject } from '../model';
+import { Myinterfacedata, InquirePOByKeyFields, Reject,Acceptinvoice } from '../model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, interval, Subscription } from 'rxjs';
 
@@ -23,7 +23,8 @@ export class DashboardComponent implements OnInit {
   body: any;
   key: any;
   message: any;
-
+  showAccept: any;
+  showAcceptLoan: any;
   constructor(
     private svc: PROCURETOPAYService,
     private modalService: BsModalService,
@@ -101,17 +102,15 @@ export class DashboardComponent implements OnInit {
           "DOC_LOAN": result.INFO.DOC_LOAN,
 
         }
+        if (result.INFO.TYPE == "INVOICE") {
+          this.showAccept = "showAccept"
+        }
+        else { this.showAccept = "" }
 
-        // this.openModal(this.body)
-        //document.getElementById("result").style.display = "block";
-        // document.getElementById("result").style.display = "block";
-        // document.getElementById("error").style.display = "none";
-        // console.log( "@0 "+result.body[0].INVOICE.InvoiceIdentity);
-        // console.log( "@1 "+this.responseValue[0].InvoiceIdentity);
-
-        // BY ID
-        // var element = document.getElementById("id01");
-        // element.innerHTML = this.responseValue;
+        if (result.INFO.TYPE == "ENDORSE_LOAN") {
+          this.showAcceptLoan = "showAcceptLoan"
+        }
+        else { this.showAcceptLoan = "" }
         this.modalRef = this.modalService.show(template, { class: 'modal-md' });
 
       },
@@ -137,7 +136,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  async confirmreject(successrejecttemplate: any) { //click ok to reject
+  async confirmreject(successtemplate: any,errortemplate: any) { //click ok to reject
     console.log('saving draft ' + JSON.stringify(this.body));
     this.loading = true;
     this.modalRef.hide();
@@ -147,7 +146,7 @@ export class DashboardComponent implements OnInit {
           this.loading = false;
           console.log('saving draft ' + JSON.stringify(sr));
           this.message = 'Reject Success';
-          this.modalRef = this.modalService.show(successrejecttemplate, { class: 'modal-dialog-centered modal-md fade show' });
+          this.modalRef = this.modalService.show(successtemplate, { class: 'modal-dialog-centered modal-md fade show' });
 
         },
         error => {
@@ -155,10 +154,70 @@ export class DashboardComponent implements OnInit {
           let header = 'Error';
           this.message = error;
           console.log('Error:' + error);
-          this.modalRef = this.modalService.show(successrejecttemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+          this.modalRef = this.modalService.show(errortemplate, { class: 'modal-dialog-centered modal-lg fade show' });
 
         });
-    // this.message = 'Reject Confirm!';
+  }
+
+  async acceptbutton(accepttemplate: any) { //click reject
+    this.modalRef.hide();
+    console.log('Accept DATA');
+    this.modalRef = this.modalService.show(accepttemplate, { class: 'modal-dialog-centered modal-md fade show' });
+
+  }
+  
+  async confirmaccept(successtemplate: any,errortemplate: any) { //click ok to accept
+    console.log('saving draft ' + JSON.stringify(this.body));
+    this.loading = true;
+    this.modalRef.hide();
+    await this.svc.submitAcceptinvoice(this.body)
+      .subscribe(
+        sr => {
+          this.loading = false;
+          console.log('saving draft ' + JSON.stringify(sr));
+          this.message = 'Accept Invoice Success';
+          this.modalRef = this.modalService.show(successtemplate, { class: 'modal-dialog-centered modal-md fade show' });
+
+        },
+        error => {
+          this.loading = false;
+          let header = 'Error';
+          this.message = error;
+          console.log('Error:' + error);
+          this.modalRef = this.modalService.show(errortemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+
+        });
+  }
+
+  
+  async acceptloanbutton(acceptLoantemplate: any) { //click reject
+    this.modalRef.hide();
+    console.log('Accept Loan DATA');
+    this.modalRef = this.modalService.show(acceptLoantemplate, { class: 'modal-dialog-centered modal-md fade show' });
+
+  }
+  
+  async confirmacceptLoan(successtemplate: any,errortemplate: any) { //click ok to accept
+    console.log('saving draft ' + JSON.stringify(this.body));
+    this.loading = true;
+    this.modalRef.hide();
+    await this.svc.submitAcceptendorse(this.body)
+      .subscribe(
+        sr => {
+          this.loading = false;
+          console.log('saving draft ' + JSON.stringify(sr));
+          this.message = 'Accept Loan Success';
+          this.modalRef = this.modalService.show(successtemplate, { class: 'modal-dialog-centered modal-md fade show' });
+
+        },
+        error => {
+          this.loading = false;
+          let header = 'Error';
+          this.message = error;
+          console.log('Error:' + error);
+          this.modalRef = this.modalService.show(errortemplate, { class: 'modal-dialog-centered modal-lg fade show' });
+
+        });
   }
 
   decline(template: any): void {
