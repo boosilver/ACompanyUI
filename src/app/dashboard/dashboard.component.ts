@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
           this.showAcceptLoan = "showAcceptLoan"
         }
         else { this.showAcceptLoan = "" }
-        this.modalRef = this.modalService.show(template, { class: 'modal-md' });
+        this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' });
 
       },
         (err) => {

@@ -9,7 +9,7 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-po">
-          <img src="../../assets/images/100.png" height="42" width="42">
+          <img src="../../assets/images/PO.png" height="42" width="42">
           <!-- <i class="fa fa-po"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
@@ -33,6 +33,8 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-invoice">
+          <img src="../../assets/images/Invoice.png" height="42" width="42">
+
           <!-- <i class="fa fa-invoice"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
@@ -56,6 +58,7 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-success">
+          <img src="../../assets/images/Loan.png" height="42" width="42">
           <!-- <i class="fa fa-success"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
@@ -79,6 +82,7 @@
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-wait">
+          <img src="../../assets/images/Endorse.png" height="42" width="42">
           <!-- <i class="fa fa-wait"></i>
           <div class="chart-wrapper">
             <canvas id="social-box-chart-1" height="90"></canvas>
@@ -212,7 +216,7 @@
           <p style="color:red; text-align: center">Do you want to reject?</p>
             </pre>
 
-        <button type="button" class="btn btn-primary" (click)="confirmreject(successtemplate)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="confirmreject(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
@@ -224,19 +228,19 @@
         <pre class="card card-block card-header text-left">
           <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Invoice?</p>
             </pre>
-        <button type="button" class="btn btn-primary" (click)="confirmaccept(successtemplate)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="confirmaccept(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
     <!-- End popup -->
 
-     <!-- Accept Loan modal popup -->
-     <ng-template style="display: block" #acceptLoantemplate>
+    <!-- Accept Loan modal popup -->
+    <ng-template style="display: block" #acceptLoantemplate>
       <div class="modal-body text-center">
         <pre class="card card-block card-header text-left">
           <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Document?</p>
             </pre>
-        <button type="button" class="btn btn-primary" (click)="confirmacceptLoan(successtemplate)">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="confirmacceptLoan(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
