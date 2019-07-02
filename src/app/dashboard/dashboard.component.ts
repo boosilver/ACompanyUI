@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
-import { Myinterfacedata, InquirePOByKeyFields, Reject,Acceptinvoice } from '../model';
+import { Myinterfacedata, InquirePOByKeyFields, Reject, Acceptinvoice } from '../model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, interval, Subscription } from 'rxjs';
 
@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   message: any;
   showAccept: any;
   showAcceptLoan: any;
+  showReject: any;
   constructor(
     private svc: PROCURETOPAYService,
     private modalService: BsModalService,
@@ -111,6 +112,16 @@ export class DashboardComponent implements OnInit {
           this.showAcceptLoan = "showAcceptLoan"
         }
         else { this.showAcceptLoan = "" }
+
+        if (result.INFO.TYPE == "PO") {
+          this.showReject = "showReject"
+        } else if (result.INFO.TYPE == "LOAN_INVOICE") {
+          this.showReject = "showReject"
+        } else if (result.INFO.TYPE == "LOAN_PO") {
+          this.showReject = "showReject"
+        } else if (result.INFO.TYPE == "INVOICE") {
+          this.showReject = "showReject"
+        } else { this.showReject = "" }
         this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' });
 
       },
@@ -136,7 +147,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  async confirmreject(successtemplate: any,errortemplate: any) { //click ok to reject
+  async confirmreject(successtemplate: any, errortemplate: any) { //click ok to reject
     console.log('saving draft ' + JSON.stringify(this.body));
     this.loading = true;
     this.modalRef.hide();
@@ -165,8 +176,8 @@ export class DashboardComponent implements OnInit {
     this.modalRef = this.modalService.show(accepttemplate, { class: 'modal-dialog-centered modal-md fade show' });
 
   }
-  
-  async confirmaccept(successtemplate: any,errortemplate: any) { //click ok to accept
+
+  async confirmaccept(successtemplate: any, errortemplate: any) { //click ok to accept
     console.log('saving draft ' + JSON.stringify(this.body));
     this.loading = true;
     this.modalRef.hide();
@@ -189,15 +200,15 @@ export class DashboardComponent implements OnInit {
         });
   }
 
-  
+
   async acceptloanbutton(acceptLoantemplate: any) { //click reject
     this.modalRef.hide();
     console.log('Accept Loan DATA');
     this.modalRef = this.modalService.show(acceptLoantemplate, { class: 'modal-dialog-centered modal-md fade show' });
 
   }
-  
-  async confirmacceptLoan(successtemplate: any,errortemplate: any) { //click ok to accept
+
+  async confirmacceptLoan(successtemplate: any, errortemplate: any) { //click ok to accept
     console.log('saving draft ' + JSON.stringify(this.body));
     this.loading = true;
     this.modalRef.hide();
@@ -233,6 +244,10 @@ export class DashboardComponent implements OnInit {
     setTimeout(function () {
       location.reload();
     }, 1500); // 5000 milliseconds means 5 seconds.
+  }
+  OknoR(): void {
+    this.message = 'Ok!';
+    this.modalRef.hide();
   }
 
   // mouseEnter(div: string) {
