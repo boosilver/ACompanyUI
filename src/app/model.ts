@@ -33,11 +33,11 @@ export class TransactionCreatePurchaseOrder {
   static sampleSubmitSr(): TransactionCreatePurchaseOrder {
     const sample: TransactionCreatePurchaseOrder = TransactionCreatePurchaseOrder.empty();
 
-    sample.TO = 'themall';
+    sample.TO = 'companyb';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.TEL_NUMBER = '0982486331';
     sample.TAX_ID = '1234567891234';
-    sample.DELIVERY_ADDRESS = '123 Empirestate';
+    sample.DELIVERY_ADDRESS = 'Ramkamheang 1111';
     sample.PRODUCT = 'apple';
     sample.NUM_PRODUCT = '100';
     sample.VALUE = '250';
@@ -77,7 +77,7 @@ export class TransactionCreateInvoice {
   static sampleSubmitSr(): TransactionCreateInvoice {
     const sample: TransactionCreateInvoice = TransactionCreateInvoice.empty();
 
-    sample.TO = 'themall';
+    sample.TO = 'companyb';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.DELIVERY_DATE = moment().add(0, 'days').format('DD-MM-YYYY')
     sample.TEL_NUMBER = '0982486331';
@@ -143,7 +143,7 @@ export class InquireData {
   static sampleSubmitSr(): InquireData {
     const sample: InquireData = InquireData.empty();
 
-    sample.user = 'themall';
+    sample.user = 'companyb';
     sample.TYPE = 'PO';
 
     return sample;
@@ -193,14 +193,14 @@ export class Loanbyinv {
   static sampleSubmitSr(): Loanbyinv {
     const sample: Loanbyinv = Loanbyinv.empty();
 
-    sample.BANK = 'bank';
+    sample.BANK = 'banka';
     sample.DOC_LOAN = 'PO';
     sample.KEY = '1';
     sample.EMAIL = 'bossza555@hotmail.com';
     sample.TEL_NUMBER = '0982486331';
     sample.BUSINESS_TYPE = 'Service_Business';
     sample.INCOME = '10000000';
-    sample.GUARANTEE = '17000000';
+    sample.GUARANTEE = '123456789123';
     sample.LOAN_AMOUNT = '1000000';
     sample.INSTALLMENT = '5';
 
@@ -234,7 +234,7 @@ export class Acceptendorse {
   static sampleSubmitSr(): Acceptendorse {
     const sample: Acceptendorse = Acceptendorse.empty();
 
-    sample.BANK = 'bank';
+    sample.BANK = 'banka';
     sample.DOC_LOAN = 'PO';
     sample.LOAN_KEY = '1';
 
