@@ -411,6 +411,9 @@ export interface DashboardList {
   STATUS: string
   _id: string
   value: inquirevalue
+  SHOW_REJECT: boolean
+  SHOW_WAIT: boolean
+  SHOW_COMPLETE: boolean
 }
 
 export interface inquirevalue{

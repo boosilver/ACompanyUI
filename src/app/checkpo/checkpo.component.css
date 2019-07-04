@@ -16,6 +16,9 @@
     text-align:justify;
   }
 
+  #closeclick{
+    cursor : pointer;
+   }
   td {
     cursor : pointer
   }

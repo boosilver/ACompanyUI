@@ -1,6 +1,6 @@
 <div class="container">
   <ngx-loading [show]="loading"></ngx-loading>
-<br>
+  <br>
   <div class="form-group row">
     <H1>INQUIRE DATA</H1>
   </div>
@@ -11,7 +11,7 @@
       <div class="col-2">
         <input type="text" class="form-control " [(ngModel)]="model.user" name="user" id="user" required>
       </div>
-      
+
       <label for="TYPE" class="col-2 col-form-label text-right font-weight-bold">Type</label>
       <div class=" field-label col-md-3 mx-auto">
         <select class="form-control" required [(ngModel)]="model.TYPE" [name]="TYPE" id="TYPE"
@@ -36,10 +36,10 @@
       <div class="col-md-2">
         <div class="center">
           <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
-             style="text-shadow:1px 1px 0 #444">SUBMIT</button>
+            style="text-shadow:1px 1px 0 #444">SUBMIT</button>
         </div>
       </div>
-    <!-- ----------------------------------SUBMIT-------------------------------------- -->
+      <!-- ----------------------------------SUBMIT-------------------------------------- -->
 
 
     </div>
@@ -51,32 +51,34 @@
 
 <div class="container" id="result" style='display:none;'>
 
-    <!-- Table -->
-    <br>
-    <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light pointer ">
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>Loan Key</th>
-          <th>Company</th>
-          <th>Date registered</th>
-          <th>Type</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!--  list คือตัวแปรของเรา -->
-        <tr (click)="openModal(template,key)" *ngFor="let key of Inquire$.DASHBOARD_LIST">
-          <td>{{key.KEY}}</td>
-          <td>{{key.LOAN_KEY}}</td>
-          <td>{{key.COMPANY}}</td>
-          <td>{{key.DATE}}</td>
-          <td>{{key.TYPE}}</td>
-          <td>
-            <span class="badge badge-success">{{key.STATUS}}</span>
-          </td>
-        </tr>
-        <!-- <tr>
+  <!-- Table -->
+  <br>
+  <table class="table table-responsive-sm table-hover table-outline mb-0 table-striped table-light pointer ">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Loan Key</th>
+        <th>Company</th>
+        <th>Date registered</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--  list คือตัวแปรของเรา -->
+      <tr (click)="openModal(template,key)" *ngFor="let key of Inquire$.DASHBOARD_LIST">
+        <td>{{key.KEY}}</td>
+        <td>{{key.LOAN_KEY}}</td>
+        <td>{{key.COMPANY}}</td>
+        <td>{{key.DATE}}</td>
+        <td>{{key.TYPE}}</td>
+        <td>
+            <span *ngIf="key.SHOW_COMPLETE" class="badge badge-success">{{key.STATUS}}</span>
+            <span *ngIf="key.SHOW_WAIT" class="badge badge-warning">{{key.STATUS}}</span>
+            <span *ngIf="key.SHOW_REJECT" class="badge badge-danger">{{key.STATUS}}</span>
+        </td>
+      </tr>
+      <!-- <tr>
                 <td>Avram Tarasios</td>
                 <td>2012/02/01</td>
                 <td>Staff</td>
@@ -108,11 +110,13 @@
                   <span class="badge badge-success">Active</span>
                 </td>
               </tr> -->
-      </tbody>
-    </table>
-    <ng-template #template>
-      <div class="modal-body text-center">
-        <pre class="card card-block card-header text-left">
+    </tbody>
+  </table>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p id="closeclick" style="text-align: right" (click)="decline()"><img src="../../assets/images/cancel.png"
+          height="20" width="20"></p>
+      <pre class="card card-block card-header text-left">
         <p *ngIf="this.body.FROM" ><img src="../../assets/images/{{this.body.FROM}}.png" height="80" width="100"></p>
         <p style="text-align: right; margin-right:3px; font-weight: bold; font-size:32" *ngIf="this.body.FROM">{{this.body.FROM}}</p>
         <p style="text-align: right; margin-right:3px; font-weight: bold; font-size:32" *ngIf="this.body.TYPE">{{this.body.TYPE}}</p>
@@ -145,18 +149,18 @@
 
       </pre>
 
-</div>
-
-<div class="container" id="error" style='display:none;'>
-
-  <h3> ERROR </h3>
-  <div class="row">
-    <label for="erMass" class="col-2 col-form-label text-right font-weight-bold">
-      Massage
-    </label>
-    <div class="col-12">
-      <input type="text" class="form-control border-bottom " name="erMass" id="erMass" value="0"
-        style="border:none; text-align: center;font-weight: bold;" readonly>
     </div>
-  </div>
-</div>
+
+    <div class="container" id="error" style='display:none;'>
+
+      <h3> ERROR </h3>
+      <div class="row">
+        <label for="erMass" class="col-2 col-form-label text-right font-weight-bold">
+          Massage
+        </label>
+        <div class="col-12">
+          <input type="text" class="form-control border-bottom " name="erMass" id="erMass" value="0"
+            style="border:none; text-align: center;font-weight: bold;" readonly>
+        </div>
+      </div>
+    </div>

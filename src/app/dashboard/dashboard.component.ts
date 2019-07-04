@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   showAccept: any;
   showAcceptLoan: any;
   showReject: any;
+  statuscolor: any;
   constructor(
     private svc: PROCURETOPAYService,
     private modalService: BsModalService,
@@ -101,7 +102,7 @@ export class DashboardComponent implements OnInit {
           "INVOICE_KEY": result.INFO.INVOICE_KEY,
           "PRICE_LOAN": result.INFO.PRICE_LOAN,
           "DOC_LOAN": result.INFO.DOC_LOAN,
-
+          "STATUS": result.INFO.STATUS,
         }
         if (result.INFO.TYPE == "INVOICE") {
           this.showAccept = "showAccept"
@@ -122,6 +123,11 @@ export class DashboardComponent implements OnInit {
         } else if (result.INFO.TYPE == "INVOICE") {
           this.showReject = "showReject"
         } else { this.showReject = "" }
+
+        if (result.INFO.STATUS == "Reject"){
+          document.getElementById("boss").className = "badge badge-danger";
+
+        }
         this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered modal-md fade show' });
 
       },

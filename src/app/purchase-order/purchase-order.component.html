@@ -82,7 +82,7 @@
     <hr>
     <div class="row">
       <div class="field-label col-md-4 mx-auto">
-        <label for="DELIVERY_DATE" class="text-muted">DELIVERY DATE</label>
+        <label for="DELIVERY_DATE" class="text-muted">Delivery Date</label>
         <input type="date" class="form-control border-bottom" required [(ngModel)]="model.DELIVERY_DATE"
           id="DELIVERY_DATE" name="DELIVERY_DATE">
       </div>
@@ -162,6 +162,7 @@
 
     <ng-template #template>
       <div class="modal-body text-center">
+        <!-- <p id = "closeclick" style="text-align: right" (click)="decline()"><img src="../../assets/images/cancel.png" height="20" width="20"></p> -->
         <pre class="card card-block card-header text-left">
         <p><span class="font">To :</span> {{this.model.TO.trim()}}</p>
         <p><span class="font">Email :</span> {{this.model.EMAIL.trim()}}</p>

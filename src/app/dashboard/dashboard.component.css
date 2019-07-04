@@ -66,6 +66,9 @@
   /* word-wrap:break-word; */
 }
 
+#closeclick{
+  cursor : pointer;
+ }
 td {
   cursor : pointer
 }

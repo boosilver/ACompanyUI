@@ -124,7 +124,7 @@
           <td>{{key.DATE}}</td>
           <td>{{key.TYPE}}</td>
           <td>
-            <span class="badge badge-success">{{key.STATUS}}</span>
+            <span id = "boss" class="">{{key.STATUS}}</span>
           </td>
         </tr>
         <!-- <tr>
@@ -163,6 +163,8 @@
     </table>
     <ng-template #template>
       <div class="modal-body text-center">
+        <p id="closeclick" style="text-align: right" (click)="decline()"><img src="../../assets/images/cancel.png"
+            height="20" width="20"></p>
         <pre class="card card-block card-header text-left">
         <p *ngIf="this.body.FROM" ><img src="../../assets/images/{{this.body.FROM}}.png" height="80" width="100"></p>
         <p style="text-align: right; margin-right:3px; font-weight: bold; font-size:32" *ngIf="this.body.FROM">{{this.body.FROM}}</p>
@@ -203,8 +205,8 @@
         <button *ngIf="this.showAcceptLoan" style="color:rgb(255, 255, 255); margin-right: 10px;" type="button"
           class="btn btn-primary" (click)="acceptloanbutton(acceptLoantemplate)">Accept</button>
         <!-- Reject -->
-        <button *ngIf="this.showReject" style="background-color: red; color:white;" type="button" class="btn btn-default"
-          (click)="confirm(rejecttemplate)">reject</button>
+        <button *ngIf="this.showReject" style="background-color: red; color:white;" type="button"
+          class="btn btn-default" (click)="confirm(rejecttemplate)">reject</button>
       </div>
     </ng-template>
 
@@ -216,7 +218,8 @@
           <p style="color:red; text-align: center">Do you want to reject?</p>
             </pre>
 
-        <button type="button" class="btn btn-primary" (click)="confirmreject(successtemplate,errortemplate)">Yes</button>
+        <button type="button" class="btn btn-primary"
+          (click)="confirmreject(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
@@ -228,7 +231,8 @@
         <pre class="card card-block card-header text-left">
           <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Invoice?</p>
             </pre>
-        <button type="button" class="btn btn-primary" (click)="confirmaccept(successtemplate,errortemplate)">Yes</button>
+        <button type="button" class="btn btn-primary"
+          (click)="confirmaccept(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
@@ -240,7 +244,8 @@
         <pre class="card card-block card-header text-left">
           <p style="color:rgb(0, 0, 0); text-align: center">Do you want to accept this Document?</p>
             </pre>
-        <button type="button" class="btn btn-primary" (click)="confirmacceptLoan(successtemplate,errortemplate)">Yes</button>
+        <button type="button" class="btn btn-primary"
+          (click)="confirmacceptLoan(successtemplate,errortemplate)">Yes</button>
         <button type="button" class="btn btn-default" (click)="decline(template)">No</button>
       </div>
     </ng-template>
